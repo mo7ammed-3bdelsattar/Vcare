@@ -19,7 +19,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
     <link rel="stylesheet" href="../assets/styles/pages/main.css">
 
-    <title>Document</title>
+    <title>history</title>
 </head>
 
 <body>
