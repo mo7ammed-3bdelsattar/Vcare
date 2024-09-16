@@ -1,7 +1,7 @@
-<?php require_once "classes/footer.php"?>
+<?php require_once "../classes/footer.php"?>
 <?php
 
- require_once "classes/Header.php";
+ require_once "../classes/Header.php";
  $header=new Header();
  echo $header->getHeader('Contact');
 require_once "../classes/Header.php";

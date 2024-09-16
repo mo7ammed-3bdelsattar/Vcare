@@ -101,7 +101,7 @@ echo $header->getHeader('Home');
             </div>
         </div>
         <h2 class="h1 fw-bold text-center my-4">doctors</h2>
-        <section class="splide home_slider_doctors mb-5">
+        <section class=" home_slider_doctors mb-5">
             <div class="splide__track ">
                 <ul class="splide__list">
                     <li class="splide__slide">
