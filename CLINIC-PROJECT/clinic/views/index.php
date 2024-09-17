@@ -256,23 +256,6 @@ $title='Home';
                     </p>
                 </div>
             </div>
-            <div class="bottom--left bottom--content bg-blue text-white">
-                <h4 class="title">download the application now</h4>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus facere eveniet in id, quod
-                    explicabo minus ut, sint possimus, fuga voluptas. Eius molestias eveniet labore ullam magnam sequi
-                    possimus quaerat!</p>
-                <div class="app-group">
-                    <div class="app"><img
-                            src="https://d1aovdz1i2nnak.cloudfront.net/vezeeta-web-reactjs/55619/_next/static/images/google-play-logo.svg"
-                            alt="">Google Play</div>
-                    <div class="app"><img
-                            src="https://d1aovdz1i2nnak.cloudfront.net/vezeeta-web-reactjs/55619/_next/static/images/apple-logo.svg"
-                            alt="">App Store</div>
-                </div>
-            </div>
-            <div class="bottom--right bg-blue text-white">
-                <img src="assets/images/banner.jpg" class="img-fluid banner-img">
-            </div>
         </div>
     </div>
    <?php require_once "includes/footer.php"?>
