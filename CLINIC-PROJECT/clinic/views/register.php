@@ -1,8 +1,9 @@
 <?php
 
+ 
 $title = "Registration Page";
 require_once "includes/header.php";
-require_once "includes/nav.php"; 
+ require_once "includes/nav.php"; 
 require_once "classes/Functions.php"; ?>
 
 <div class="hold-transition register-page">
@@ -10,7 +11,6 @@ require_once "classes/Functions.php"; ?>
         <div class="register-logo">
             <a href=""><b>VCare</b></a>
         </div>
-
         <div class="card">
             <div class="card-body register-card-body">
                 <p class="login-box-msg">Register a new membership</p>

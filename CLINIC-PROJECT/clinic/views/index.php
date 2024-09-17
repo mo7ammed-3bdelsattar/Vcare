@@ -3,8 +3,6 @@ $title='Home';
  require_once "includes/header.php";
  require_once "includes/nav.php";
  require_once "classes/Functions.php";
-
-
 ?>
 
     <div class="page-wrapper">
