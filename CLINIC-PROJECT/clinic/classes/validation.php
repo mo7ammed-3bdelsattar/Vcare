@@ -100,4 +100,15 @@ class Validation
         }
     }
 
+    function getErrors(){
+        return $this->errors;
+    }
+    function sanitizer($str) {
+        $str = trim($str);
+        $str = stripslashes($str);
+        $str = htmlspecialchars($str);
+        return $str;
+      
+    }
+
 }
