@@ -10,7 +10,6 @@ require_once "../classes/nav.php";
 $header = new Header();
 $nav = new Nav();
 echo $header->getHeader('Contact');
-
 ?>
 <div class="page-wrapper">
     <?php echo $nav->getNav(); ?>

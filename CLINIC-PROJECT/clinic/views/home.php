@@ -1,12 +1,10 @@
 <?php
-require_once "../classes/nav.php";
-require_once "../classes/Header.php";
-require_once "../classes/footer.php";
-
+require_once "classes/nav.php";
+require_once "classes/Header.php";
+require_once "classes/footer.php";
 $nav = new Nav();
 $header = new Header();
 echo $header->getHeader('Home');
-
 ?>
 
 <div class="page-wrapper">
@@ -101,7 +99,7 @@ echo $header->getHeader('Home');
             </div>
         </div>
         <h2 class="h1 fw-bold text-center my-4">doctors</h2>
-        <section class=" home_slider_doctors mb-5">
+        <section class="splide home_slider_doctors mb-5">
             <div class="splide__track ">
                 <ul class="splide__list">
                     <li class="splide__slide">
