@@ -1,7 +1,7 @@
 <?php
 
 class Database {
-
+    
     public function connection($dataBase){
         $conn= mysqli_connect("localhost","root","",$dataBase);
         if (!$conn) {
@@ -9,7 +9,6 @@ class Database {
         }
         return $conn;
     }
-
     public function closeConnection($conn){
         mysqli_close($conn);
     }

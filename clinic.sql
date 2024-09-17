@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 16, 2024 at 10:15 PM
+-- Generation Time: Sep 17, 2024 at 11:56 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -24,26 +24,13 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `book`
---
-
-CREATE TABLE `book` (
-  `id` int(11) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `phone` varchar(11) NOT NULL,
-  `email` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `contact_us`
 --
 
 CREATE TABLE `contact_us` (
   `id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
-  `phone` varchar(11) NOT NULL,
+  `email` varchar(200) NOT NULL,
   `subject` text NOT NULL,
   `message` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -60,7 +47,26 @@ CREATE TABLE `doctors` (
   `major_id` int(11) NOT NULL,
   `start` int(11) NOT NULL,
   `end` int(11) NOT NULL,
-  `price` int(11) NOT NULL
+  `price` int(11) NOT NULL,
+  `image` varchar(300) NOT NULL,
+  `phone` varchar(11) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `visitors` int(11) NOT NULL,
+  `days` varchar(100) NOT NULL,
+  `user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `info`
+--
+
+CREATE TABLE `info` (
+  `id` int(11) NOT NULL,
+  `title` varchar(100) NOT NULL,
+  `description` varchar(400) NOT NULL,
+  `image` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -71,8 +77,24 @@ CREATE TABLE `doctors` (
 
 CREATE TABLE `majors` (
   `id` int(11) NOT NULL,
-  `name` varchar(100) NOT NULL,
+  `title` varchar(100) NOT NULL,
   `image` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `patient`
+--
+
+CREATE TABLE `patient` (
+  `id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `phone` varchar(11) NOT NULL,
+  `email` varchar(200) NOT NULL,
+  `doctoe_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `date` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -87,19 +109,12 @@ CREATE TABLE `users` (
   `email` varchar(200) NOT NULL,
   `password` varchar(200) NOT NULL,
   `phone` varchar(11) NOT NULL,
-  `age` int(11) NOT NULL,
-  `gender` enum('male','female','','') NOT NULL
+  `type` enum('user','doctor','admin','') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `book`
---
-ALTER TABLE `book`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `contact_us`
@@ -111,6 +126,14 @@ ALTER TABLE `contact_us`
 -- Indexes for table `doctors`
 --
 ALTER TABLE `doctors`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `major_id` (`major_id`),
+  ADD KEY `user-id` (`user_id`);
+
+--
+-- Indexes for table `info`
+--
+ALTER TABLE `info`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -118,6 +141,14 @@ ALTER TABLE `doctors`
 --
 ALTER TABLE `majors`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `patient`
+--
+ALTER TABLE `patient`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `doctor_id` (`doctoe_id`);
 
 --
 -- Indexes for table `users`
@@ -128,12 +159,6 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT for dumped tables
 --
-
---
--- AUTO_INCREMENT for table `book`
---
-ALTER TABLE `book`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `contact_us`
@@ -148,9 +173,21 @@ ALTER TABLE `doctors`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `info`
+--
+ALTER TABLE `info`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `majors`
 --
 ALTER TABLE `majors`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `patient`
+--
+ALTER TABLE `patient`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -158,6 +195,24 @@ ALTER TABLE `majors`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `doctors`
+--
+ALTER TABLE `doctors`
+  ADD CONSTRAINT `major_id` FOREIGN KEY (`major_id`) REFERENCES `majors` (`id`),
+  ADD CONSTRAINT `user-id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+
+--
+-- Constraints for table `patient`
+--
+ALTER TABLE `patient`
+  ADD CONSTRAINT `doctor_id` FOREIGN KEY (`doctoe_id`) REFERENCES `doctors` (`id`),
+  ADD CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
