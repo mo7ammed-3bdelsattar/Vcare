@@ -1,47 +1,81 @@
 <?php
+
+$title = "Registration Page";
 require_once "includes/header.php";
-require_once "includes/nav.php";
+require_once "includes/nav.php"; 
+require_once "classes/Functions.php"; ?>
 
-?>
+<div class="hold-transition register-page">
+    <div class="register-box">
+        <div class="register-logo">
+            <a href=""><b>VCare</b></a>
+        </div>
 
-    <div class="page-wrapper">
-        <div class="container">
-            <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="fw-bold my-4 h4">
-                <ol class="breadcrumb justify-content-center">
-                    <li class="breadcrumb-item"><a class="text-decoration-none" href="./index.php">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">login</li>
-                </ol>
-            </nav>
-            <div class="d-flex flex-column gap-3 account-form mx-auto mt-5">
-                <form class="form">
-                    <div class="form-items">
-                        <div class="mb-3">
-                            <label class="form-label required-label" for="name">Name</label>
-                            <input type="text" class="form-control" id="name" required>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label required-label" for="phone">Phone</label>
-                            <input type="tel" class="form-control" id="phone" required>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label required-label" for="email">Email</label>
-                            <input type="email" class="form-control" id="email" required>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label required-label" for="password">password</label>
-                            <input type="password" class="form-control" id="password" required>
+        <div class="card">
+            <div class="card-body register-card-body">
+                <p class="login-box-msg">Register a new membership</p>
+
+                <form action="<?=Functions::url('index.php?page=home')?>" method="post">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Full name">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-user"></span>
+                            </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Create account</button>
+                    <div class="input-group mb-3">
+                        <input type="email" class="form-control" placeholder="Email">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-envelope"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="tel" class="form-control" placeholder="Phone">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-phone"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="password" class="form-control" placeholder="Password">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="password" class="form-control" placeholder="Retype password">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8">
+                            <div class="icheck-primary">
+                                <input type="checkbox" id="agreeTerms" name="terms" value="agree">
+                                <label for="agreeTerms">
+                                    I agree to the <a href="#">terms</a>
+                                </label>
+                            </div>
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-4">
+                            <button type="submit" class="btn btn-primary btn-block">Register</button>
+                        </div>
+                        <!-- /.col -->
+                    </div>
                 </form>
-                <div class="d-flex justify-content-center gap-2">
-                    <span>already have an account?</span><a class="link" href="<?=Functions::url('index.php?page=login')?>"> login</a>
-                </div>
+                <a href="<?=Functions::url('index.php?page=login')?>" class="text-center">I already have a membership</a>
             </div>
-
-        </div>
+            <!-- /.form-box -->
+        </div><!-- /.card -->
     </div>
-
-    <?php
-require_once "includes/footer.php";
-?>
+</div>
+<?php require_once "includes/footer.php" ?>
