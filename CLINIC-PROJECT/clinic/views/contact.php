@@ -1,41 +1,58 @@
 <?php
-$title='Contact';
- require_once "includes/header.php";
- require_once "includes/nav.php";
- require_once "classes/Functions.php";
+$title = 'Contact';
+require_once "includes/header.php";
+require_once "includes/nav.php";
+require_once "classes/Functions.php";
 ?>
-<div class="page-wrapper">
-    <div class="container">
+<div class="content-wrapper">
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="fw-bold my-4 h4">
+        <ol class="breadcrumb justify-content-center">
+            <li class="breadcrumb-item"><a class="text-decoration-none" href="./index.php">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Contact</li>
+        </ol>
+    </nav>
+    <!-- Content Header (Page header) -->
 
-        <div class="d-flex flex-column gap-3 account-form mx-auto mt-5">
-            <form class="form">
-                <div class="form-items">
-                    <div class="mb-3">
-                        <label class="form-label required-label" for="name">Name</label>
-                        <input type="text" class="form-control" id="name" required>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label required-label" for="phone">Phone</label>
-                        <input type="tel" class="form-control" id="phone" required>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label required-label" for="email">Email</label>
-                        <input type="email" class="form-control" id="email" required>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label required-label" for="subject">subject</label>
-                        <input type="text" class="form-control" id="subject" required>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label required-label" for="message">message</label>
-                        <textarea class="form-control" id="message" required></textarea>
+    <!-- Main content -->
+    <section class="content">
+
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-body row">
+                <div class="col-5 text-center d-flex align-items-center justify-content-center">
+                    <div class="">
+                        <h2>Admin<strong>LTE</strong></h2>
+                        <p class="lead mb-5">123 Testing Ave, Testtown, 9876 NA<br>
+                            Phone: +1 234 56789012
+                        </p>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary">Send Message</button>
-            </form>
+                <div class="col-7">
+                    <div class="form-group">
+                        <label for="inputName">Name</label>
+                        <input type="text" id="inputName" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail">E-Mail</label>
+                        <input type="email" id="inputEmail" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label for="inputSubject">Subject</label>
+                        <input type="text" id="inputSubject" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label for="inputMessage">Message</label>
+                        <textarea id="inputMessage" class="form-control" rows="4"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary" value="Send message">
+                    </div>
+                </div>
+            </div>
         </div>
 
-    </div>
+    </section>
+    <!-- /.content -->
 </div>
 
 <?php require_once "includes/footer.php" ?>

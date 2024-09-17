@@ -15,7 +15,7 @@ require_once "classes/Functions.php"; ?>
             <div class="card-body register-card-body">
                 <p class="login-box-msg">Register a new membership</p>
 
-                <form action="<?=Functions::url('index.php?page=home')?>" method="post">
+                <form action="<?=Functions::url('index.php?page=user-login')?>" method="post">
                     <div class="input-group mb-3">
                         <input type="email" class="form-control" placeholder="Email">
                         <div class="input-group-append">
