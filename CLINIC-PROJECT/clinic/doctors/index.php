@@ -1,13 +1,15 @@
 <?php
+$title ='Doctors';
 require_once "includes/header.php";
 require_once "includes/nav.php";
+require_once "classes/Functions.php";
 
 ?>
     <div class="page-wrapper">
         <div class="container">
             <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="fw-bold my-4 h4">
                 <ol class="breadcrumb justify-content-center">
-                    <li class="breadcrumb-item"><a class="text-decoration-none" href="../index.php">Home</a></li>
+                    <li class="breadcrumb-item"><a class="text-decoration-none" href=".<?=Functions::url('index.php?page=home')?>">Home</a></li>
                     <li class="breadcrumb-item active" aria-current="page">doctors</li>
                 </ol>
             </nav>
