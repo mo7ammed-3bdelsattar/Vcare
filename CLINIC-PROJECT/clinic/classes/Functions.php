@@ -25,10 +25,9 @@ public function sanitizeInput($input)
 {
     return trim(htmlspecialchars($input));
 }
-public function url($url){
+public static function url($url){
     return "http://127.0.0.1/vCare/CLINIC-PROJECT/clinic/".$url;
 
 }
-
 
 }
