@@ -1,7 +1,6 @@
 <?php
 require_once "includes/header.php";
 require_once "includes/nav.php";
-
 ?>
     <div class="page-wrapper">
         <div class="container">

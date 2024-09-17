@@ -14,7 +14,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $logIn->email2('email', $email);
     $logIn->min('password', $password, 8);
     $logIn->password('password', $password);
-
     if (empty($logIn->errors)) {
     }
     else{

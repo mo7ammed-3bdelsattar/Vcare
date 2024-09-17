@@ -24,11 +24,11 @@ if (isset($_GET['page'])) {
         case 'book':
             require_once 'doctors/doctor.php';
             break;
-        case 'user_login':
-            require_once 'controlers/user_login.php';
+        case 'user-login':
+            require_once 'controllers/user-login.php';
             break;
         case 'user_store':
-            require_once 'controlers/user_store.php';
+            require_once 'controllers/user_store.php';
             break;
         default:
             require_once 'views/index.php';
