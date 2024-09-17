@@ -20,7 +20,7 @@ class Database {
     public function fetchAssoc($result){
         return mysqli_fetch_assoc($result);
     }
-
+    
     public function fetchAll($result){
         return mysqli_fetch_all($result, MYSQLI_ASSOC);
     }
@@ -86,7 +86,7 @@ class Database {
         ON `$table2`.`id`=`$table1`.`major_id`  WHERE $table1.id=$id";
        return mysqli_fetch_assoc(mysqli_query($conn,$sql));
     }
-   
+    
 }
 
 
