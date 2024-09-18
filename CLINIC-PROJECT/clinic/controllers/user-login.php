@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '../classes/validation.php';
+require_once 'classes/validation.php';
 
 $logIn = new Validation();
 

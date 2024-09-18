@@ -51,6 +51,7 @@ class Database {
     }
     public function insert($table_name,$data){
         global $conn;
+        $conn = $this->connection('clinic');
         $keys = implode(',', array_keys($data));
         $values = "'". implode("','", array_values($data)). "'";
         $sql = "INSERT INTO `$table_name` ($keys) VALUES ($values)";

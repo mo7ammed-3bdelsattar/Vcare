@@ -27,6 +27,9 @@ if (isset($_GET['page'])) {
         case 'user-login':
             require_once 'controllers/user-login.php';
             break;
+            case 'user-register':
+                require_once 'controllers/user-register.php';
+                break;
         case 'user_store':
             require_once 'controllers/user_store.php';
             break;
