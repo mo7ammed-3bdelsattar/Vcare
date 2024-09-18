@@ -8,7 +8,7 @@ class Database {
             die("Connection failed: ". mysqli_connect_error());
         }
         return $conn;
-    }
+    } 
     public function closeConnection($conn){
         mysqli_close($conn);
     }
