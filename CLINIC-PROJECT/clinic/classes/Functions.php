@@ -18,8 +18,8 @@ public function redirectAfter($url, $numOfSec)
 }
 public function redirect($url)
 {
-    header("Refresh: 0 ; url=$url");
-    die;
+     header('Location:'.Functions::url($url));
+    exit;
 }
 public function sanitizeInput($input)
 {

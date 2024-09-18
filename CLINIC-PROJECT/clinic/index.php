@@ -27,8 +27,14 @@ if (isset($_GET['page'])) {
         case 'user-login':
             require_once 'controllers/user-login.php';
             break;
-        case 'user_store':
-            require_once 'controllers/user_store.php';
+        case 'user-register':
+            require_once 'controllers/user-register.php';
+            break;
+        case 'contact-us':
+            require_once 'controllers/contact-us.php';
+            break;
+        case 'patients':
+            require_once 'controllers/patients.php';
             break;
         default:
             require_once 'views/index.php';
