@@ -28,7 +28,7 @@ require_once "classes/Functions.php";
                     </div>
                 </div>
                 <div class="col-7">
-                    <div class="form-group">
+                    <div class="form-group" action="<?=Functions::url('index.php?page=contact-us')?>" method="post" >
                         <label for="inputName">Name</label>
                         <input type="text" id="inputName" class="form-control" />
                     </div>
