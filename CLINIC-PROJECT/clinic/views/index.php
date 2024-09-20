@@ -2,8 +2,6 @@
 $title = 'Home';
 require_once "includes/header.php";
 require_once "includes/nav.php";
-require_once "classes/Functions.php";
-require_once "classes/Database.php";
 
 
 $func = new Functions();

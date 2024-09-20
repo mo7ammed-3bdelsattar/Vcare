@@ -41,12 +41,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     'email' => $user['email'],
                     'phone' => $user['phone'],
                     'image' => $user['image'],
+                    'password' => $password,
                     'type' => $user['type']
                 ];
             }
             // $fun->dd($_SESSION['auth'] );
         } else {
-            $_SESSION['errors'] = "Invalid email or password";
+            $_SESSION['errors']['password'] = "Invalid email or password";
             $fun->redirect('index.php?page=login');
         }
 

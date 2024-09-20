@@ -39,7 +39,17 @@ require_once "classes/Functions.php";
                 </a>
                 <?php endif; ?>
                 <?php if(isset($_SESSION['auth'])): ?>
-                <a class="nav-icon position-relative text-decoration-none" href="<?= Functions::url('index.php?page=profile') ?>">
+
+                <a class="nav-icon position-relative text-decoration-none" href="<?php
+                    if($_SESSION['auth']['type']=="admin"): echo
+                    Functions::url('index.php?page=view_admin') ;
+                    elseif($_SESSION['auth']['type']=='doctor'):
+                        echo Functions::url('index.php?page=profile-doc');
+                    else: 
+                        echo Functions::url('index.php?page=profile-user');
+    
+                    endif;    
+                    ?>">
                     <i class="fa fa-fw fa-user text-dark mr-3" style="font-size:24px"></i>
                     <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"></span>
                 </a>

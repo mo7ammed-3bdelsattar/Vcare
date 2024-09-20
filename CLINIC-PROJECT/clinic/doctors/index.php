@@ -21,7 +21,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 }else {
     $sql = "SELECT `doctors`.* , `majors`.`id` AS maj_id ,`majors`.`title` FROM 
                 `doctors` INNER JOIN `majors` ON `majors`.`id`=`doctors`.`major_id`
-             ";
+             "; 
 }
 
 $result = mysqli_query($conn, $sql);
@@ -56,8 +56,7 @@ if ($result) {
                         <div class="card-body d-flex flex-column gap-1 justify-content-center">
                             <h4 class="card-title fw-bold text-center"><?= $doctor[$key]['name'] ?></h4>
                             <h6 class="card-title fw-bold text-center"><?= $doctor[$key]['title'] ?></h6>
-                            <a href="<?= Functions::url('index.php?page=book&id=') . $doctor[$key]['id'] ?>" class="btn btn-outline-primary card-button">Book an
-                                        appointment</a>
+                            <a href="<?= Functions::url('index.php?page=book&id=') . $doctor[$key]['id'] ?>" class="btn btn-outline-primary card-button">Book (<?=$doctor[$key]['price']?>$)</a>
                         </div>
                     </div>
                 <?php endforeach;
