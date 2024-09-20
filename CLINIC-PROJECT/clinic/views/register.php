@@ -13,19 +13,7 @@ require_once "includes/nav.php";
         <div class="register-logo">
             <a href=""><b>VCare</b></a>
         </div>
-        <?php if (isset($_SESSION['success'])) :
-
-            echo "<script>
-                Swal.fire({
-                    title: 'Welcome!',
-                    text: ' $_SESSION[success]',
-                    icon: 'success'
-                });
-                </script>";
-            unset($_SESSION['success']);
-            $func->redirectAfter(Functions::url('index.php'),3);
-        endif;
-        ?>
+       
         <div class="card">
             <div class="card-body register-card-body">
                 <p class="login-box-msg">Register a new membership</p>
