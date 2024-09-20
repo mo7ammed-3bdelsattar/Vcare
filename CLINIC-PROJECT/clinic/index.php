@@ -1,10 +1,16 @@
 <?php
-
+session_start();
+require_once "classes/Functions.php";
+require_once "classes/validation.php";
+require_once "classes/Database.php";
 if (isset($_GET['page'])) {
 
     switch ($_GET['page']) {
         case 'home':
             require_once 'views/index.php';
+            break;
+        case 'profile':
+            require_once 'views/profile.php';
             break;
         case 'contact':
             require_once 'views/contact.php';
@@ -14,6 +20,12 @@ if (isset($_GET['page'])) {
             break;
         case 'login':
             require_once 'views/login.php';
+            break;
+        case 'logout':
+            require_once 'views/logout.php';
+            break;
+        case 'search':
+            require_once 'includes/search.php';
             break;
         case 'majors':
             require_once 'views/majors.php';

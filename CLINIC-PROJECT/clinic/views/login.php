@@ -4,7 +4,8 @@ if(isset($_SESSION['auth'])){$func->redirect('index.php');}
 $title = "Registration Page";
 require_once "includes/header.php";
 require_once "includes/nav.php";
-
+require_once "classes/Functions.php"; 
+require_once "classes/validation.php"; 
 ?>
 
 <div class="hold-transition register-page">
@@ -25,7 +26,7 @@ require_once "includes/nav.php";
                         </div>
                         <span class = "text-danger"><?= $_SESSION['errors']['email'] ?? ""; ?></span>
                     </div>
-                    
+                    <span class = "text-danger"><?= $_SESSION['errors']['email'] ?? ""; ?></span>
                     <div class="input-group mb-3">
                         <input type="password"  class="form-control" id="password" name="password" placeholder="Password">
                         <div class="input-group-append">
@@ -35,7 +36,7 @@ require_once "includes/nav.php";
                         </div>
                         <span class = "text-danger"><?= $_SESSION['errors']['password'] ?? ""; ?></span>
                     </div>
-                    
+                    <span class = "text-danger"><?= $_SESSION['errors']['password'] ?? ""; ?></span>
                     <div class="row">
                         <!-- /.col -->
                         <div class="col-4">
@@ -50,6 +51,4 @@ require_once "includes/nav.php";
         </div><!-- /.card -->
     </div>
 </div>
-<?php
-unset($_SESSION['errors']);
-require_once "includes/footer.php" ?>
+<?php require_once "includes/footer.php" ?>
