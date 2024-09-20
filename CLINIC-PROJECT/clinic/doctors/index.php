@@ -5,9 +5,35 @@ require_once "includes/nav.php";
 require_once "classes/Functions.php";
 require_once "classes/Database.php";
 $db = new Database();
+$fun=new Functions();
 $conn = $db->connection('clinc');
-$result3 = $db->gitAll('doctors');
-$doctor = $db->fetchAll($result3);
+
+if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+    $id = $_GET['id'];
+    $sql = "SELECT `doctors`.* , `majors`.`id` AS maj_id ,`majors`.`title` FROM 
+                `doctors` INNER JOIN `majors` ON `majors`.`id`=`doctors`.`major_id`
+                  WHERE `doctors`.`id`='$id' ";
+} elseif (isset($_GET['major_id']) && is_numeric($_GET['major_id'])) {
+    $id = $_GET['major_id'];
+    $sql = "SELECT `doctors`.* , `majors`.`id` AS maj_id ,`majors`.`title` FROM 
+                `doctors` INNER JOIN `majors` ON `majors`.`id`=`doctors`.`major_id`
+                  WHERE `doctors`.`major_id`='$id'";
+}else {
+    $sql = "SELECT `doctors`.* , `majors`.`id` AS maj_id ,`majors`.`title` FROM 
+                `doctors` INNER JOIN `majors` ON `majors`.`id`=`doctors`.`major_id`
+             ";
+}
+
+$result = mysqli_query($conn, $sql);
+if ($result) {
+    $doctor = $db->fetchAll($result);
+} else {
+    $sql = "SELECT `doctors`.* , `majors`.`id` AS maj_id ,`majors`.`title` FROM 
+                `doctors` INNER JOIN `majors` ON `majors`.`id`=`doctors`.`major_id`
+              ";
+    $result = $db->query($conn, $sql);
+    $doctor = $db->fetchAll($result);
+}
 
 
 
@@ -22,19 +48,28 @@ $doctor = $db->fetchAll($result3);
         </nav>
         <div class="doctors-grid">
             <div class="d-flex flex-wrap gap-4 justify-content-center">
-                <?php foreach ($doctor as $key => $value) : ?>
+                <?php
+                if($db->numRows($result)>0):
+                foreach ($doctor as $key => $value) : ?>
                     <div class="card p-2" style="width: 18rem;">
                         <img src="<?= $doctor[$key]['image'] ?>" class="card-img-top rounded-circle card-image-circle" alt="major">
                         <div class="card-body d-flex flex-column gap-1 justify-content-center">
                             <h4 class="card-title fw-bold text-center"><?= $doctor[$key]['name'] ?></h4>
-                            <a href="<?= Functions::url('index.php?page=book&id=') . $doctor[$key]['id'] ?>" class="btn btn-outline-primary card-button">Browse Doctors</a>
+                            <h6 class="card-title fw-bold text-center"><?= $doctor[$key]['title'] ?></h6>
+                            <a href="<?= Functions::url('index.php?page=book&id=') . $doctor[$key]['id'] ?>" class="btn btn-outline-primary card-button">Book an
+                                        appointment</a>
                         </div>
                     </div>
-                <?php endforeach; ?>
+                <?php endforeach;
+                else:
+                    ?>
+                    <div class="text-center text-muted"><p>no doctors fonded</p></div>
+                <?php endif;
+                ?>
             </div>
 
         </div>
-        <nav class="mt-5" aria-label="navigation">
+        <!-- <nav class="mt-5" aria-label="navigation">
             <ul class="pagination justify-content-center">
                 <li class="page-item">
                     <a class="page-link page-prev" href="#" aria-label="Previous">
@@ -51,7 +86,7 @@ $doctor = $db->fetchAll($result3);
                     </a>
                 </li>
             </ul>
-        </nav>
+        </nav> -->
     </div>
 </div>
 <?php

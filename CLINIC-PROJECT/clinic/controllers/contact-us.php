@@ -16,7 +16,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $subject = $logIn->sanitizer($_POST['subject']);
     $email = $logIn->sanitizer($_POST['email']);
     $message = $logIn->sanitizer($_POST['message']);
-
     $nameReq=$logIn->require($name);
     if(!$nameReq){
         $errors['name']="name is required";
