@@ -24,13 +24,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     elseif(!$logIn->validateEmail2($email)){
         $errors['email']="email is not valid";
     }
-    elseif(empty($errors)){
+     if(empty($errors)){
 
         // $password=sha1($password);
         // $sql="SELECT * FROM `users` WHERE  `email` = '$email' AND `password` = '$password' ";
         // $result=mysqli_query($conn,$sql);
         // $user=mysqli_fetch_assoc($result);
-        
+
         // if($user){
         //     $_SESSION['auth']=[
         //         'name'=>$user['name'],

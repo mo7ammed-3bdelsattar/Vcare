@@ -68,8 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     elseif(!$logIn->matchInput('password','confirm')){
         $errors['confirm']="password and confirm password must match";
     }
-
-
+    
     if(empty($errors)){
         // $password=sha1($password);
         // $confirm=sha1($confirm);
