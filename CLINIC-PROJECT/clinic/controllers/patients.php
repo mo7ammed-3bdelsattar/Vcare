@@ -20,19 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $nameReq=$logIn->require($name);
     if(!$nameReq){
         $errors['name']="name is required";
-    }
-    $emailReq=$logIn->require($email);
-    if(!$emailReq){
-        $errors['email']="email is required";
-    }
-    elseif(!$$logIn->require($phone)){
-        $errors['phone']="phone is required";
-    }
-    elseif(!$$logIn->require($date)){
-        $errors['date']="date is required";
-    }
-
-    elseif(!$logIn->validateName($name)){
+    }elseif(!$logIn->validateName($name)){
         $errors['name']="name should be alphabets only";
     }
     elseif(!$logIn->alpha($name)){
@@ -41,13 +29,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     elseif(!$logIn->min($name,3)){
         $errors['name']="name should be at least 3 characters long";
     }
-    elseif(!$logIn->validateEmail($email)){
+    $emailReq=$logIn->require($email);
+    if(!$emailReq){
+        $errors['email']="email is required";
+    }elseif(!$logIn->validateEmail($email)){
         $errors['email']="email is not valid";
     }
     elseif(!$logIn->validateEmail2($email)){
         $errors['email']="email is not valid";
     }
-    elseif(!$logIn->validatePhone($phone)){
+    if(!$logIn->require($phone)){
+        $errors['phone']="phone is required";
+    } elseif(!$logIn->validatePhone($phone)){
         $errors['phone']="invalid phone number";
     }
     elseif(!$logIn->numaric($phone)){
@@ -56,7 +49,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     elseif(!$logIn->phoneLength($phone)){
         $errors['phone']="phone should be 11 characters long";
     }
-    
+    if(!$logIn->require($date)){
+        $errors['date']="date is required";
+    }
     if(empty($errors)){
         // $password=sha1($password);
         // $confirm=sha1($confirm);
@@ -67,8 +62,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
     else{
         $_SESSION['errors']=$errors;
-        
+        $fun->redirect('index.php?page=book');
     }
-    $fun->redirect('index.php?page=patients');
+    
 }
 
