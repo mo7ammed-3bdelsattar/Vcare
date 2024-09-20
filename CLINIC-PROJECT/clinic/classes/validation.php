@@ -67,3 +67,5 @@ class Validation{
     }
     public function phoneLength($input){
         return strlen($input) == 11;
+    }
+}
