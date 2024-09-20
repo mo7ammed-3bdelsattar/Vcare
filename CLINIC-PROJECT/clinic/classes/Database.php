@@ -34,6 +34,11 @@ class Database {
         $sql = "SELECT * FROM `$table_name` WHERE id=$id";
        return mysqli_fetch_assoc(mysqli_query($conn,$sql));
     }
+    public function gitRow($table_name,$column,$id){
+        global $conn;
+        $sql = "SELECT * FROM `$table_name` WHERE `$column`=$id";
+       return mysqli_fetch_assoc(mysqli_query($conn,$sql));
+    }
     public function updateRow($table_name,$data,$id){
         global $conn;
         $set = '';
@@ -81,7 +86,7 @@ class Database {
     }
     function joinTables( $table1, $table2,$id) {
         global $conn;
-        $sql = "SELECT `$table1`.* , `$table2`.`name` , `$table2`.`id`AS `cat_id`  FROM `$table1` INNER JOIN `$table2` 
+        $sql = "SELECT `$table1`.* , `$table2`.`major` , `$table2`.`id`AS `cat_id`  FROM `$table1` INNER JOIN `$table2` 
         ON `$table2`.`id`=`$table1`.`major_id`  WHERE $table1.id=$id";
        return mysqli_fetch_assoc(mysqli_query($conn,$sql));
     }

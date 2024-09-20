@@ -11,7 +11,7 @@ class Validation{
         return filter_var($email, FILTER_VALIDATE_EMAIL);
     }
     public function validatePhone($phone) {
-        return preg_match('/^(010|011|012|015)[0-9]{7}$|^(02)[0-9]{8}$|^(097)[0-9]{7}$/', $phone);
+        return preg_match('/^(010|011|012|015)[0-9]{8}$|^(02)[0-9]{8}$|^(097)[0-9]{7}$/', $phone);
     }
     public function validatePassword($password) {
         return (strlen($password) >= 8 && preg_match('/[a-z]/', $password) && preg_match('/[A-Z]/', $password) && preg_match('/\d/', $password) && preg_match('/[^\w\s]/', $password));
@@ -49,7 +49,7 @@ class Validation{
         return is_numeric($input);
     }
     public function validateNumber($input){
-        return preg_match("/^\d{10}$/", $input);
+        return preg_match("/^\d{11}$/", $input);
     }
     public function matchInput($input1, $input2){
         return ($input1 == $input2);
@@ -63,10 +63,7 @@ class Validation{
         return in_array($file['type'], $allowedMimeTypes) && $extension == "jpg" || $extension == "png" || $extension == "gif";
     }
     public function alpha($input){
-        return preg_match('/^[a-zA-Z]+$/', $input);
+        return preg_match('/^[a-zA-Z\s]+$/', $input);
     }
     public function phoneLength($input){
         return strlen($input) == 11;
-    }
-
-}

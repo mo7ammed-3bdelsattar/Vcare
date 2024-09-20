@@ -1,4 +1,5 @@
 <?php
+session_start();
 $title ='Book';
  require_once "includes/header.php";
  require_once "includes/nav.php";
@@ -47,18 +48,21 @@ $title ='Book';
               <div class="mb-3">
                 <label class="form-label required-label" for="name">Name</label>
                 <input type="text" class="form-control" id="name" required />
+                <span class = "text-danger"><?= $_SESSION['errors']['name'] ?? ""; ?></span>
               </div>
               <div class="mb-3">
                 <label class="form-label required-label" for="phone"
                   >Phone</label
                 >
                 <input type="tel" class="form-control" id="phone" required />
+                <span class = "text-danger"><?= $_SESSION['errors']['phone'] ?? ""; ?></span>
               </div>
               <div class="mb-3">
                 <label class="form-label required-label" for="email"
                   >Email</label
                 >
                 <input type="email" class="form-control" id="email" required />
+                <span class = "text-danger"><?= $_SESSION['errors']['email'] ?? ""; ?></span>
               </div>
             </div>
             <button type="submit" class="btn btn-primary">
@@ -69,5 +73,6 @@ $title ='Book';
       </div>
     </div>
 <?php
+unset($_SESSION['errors']);
 require_once "includes/footer.php";
 ?>

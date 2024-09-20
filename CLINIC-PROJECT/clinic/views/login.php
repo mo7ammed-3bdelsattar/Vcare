@@ -1,10 +1,11 @@
 <?php
-session_start();
+$func=new Functions();
+if(isset($_SESSION['auth'])){$func->redirect('index.php');}
 $title = "Registration Page";
 require_once "includes/header.php";
 require_once "includes/nav.php";
-require_once "classes/Functions.php"; 
-require_once "classes/validation.php"; 
+
+
 ?>
 
 <div class="hold-transition register-page">
@@ -13,7 +14,7 @@ require_once "classes/validation.php";
             <a href=""><b>VCare</b></a>
         </div>
         <div class="card">
-            <div class="card-body register-card-body">
+            <div class="card-body register-card-body text-center">
                 <p class="login-box-msg">Register a new membership</p>
                 <form action="<?= Functions::url('index.php?page=user-login') ?>" method="POST">
                     <div class="input-group mb-3">
@@ -23,8 +24,9 @@ require_once "classes/validation.php";
                                 <span class="fas fa-envelope"></span>
                             </div>
                         </div>
+                        <span class = "text-danger"><?= $_SESSION['errors']['email'] ?? ""; ?></span>
                     </div>
-                    <span class = "text-danger"><?= $_SESSION['errors']['email'] ?? ""; ?></span>
+
                     <div class="input-group mb-3">
                         <input type="password"  class="form-control" id="password" name="password" placeholder="Password">
                         <div class="input-group-append">
@@ -32,8 +34,9 @@ require_once "classes/validation.php";
                                 <span class="fas fa-lock"></span>
                             </div>
                         </div>
+                        <span class = "text-danger"><?= $_SESSION['errors']['password'] ?? ""; ?></span>
                     </div>
-                    <span class = "text-danger"><?= $_SESSION['errors']['password'] ?? ""; ?></span>
+
                     <div class="row">
                         <!-- /.col -->
                         <div class="col-4">
@@ -48,4 +51,8 @@ require_once "classes/validation.php";
         </div><!-- /.card -->
     </div>
 </div>
-<?php require_once "includes/footer.php" ?>
+
+<?php
+unset($_SESSION['errors']);
+require_once "includes/footer.php" ?>
+

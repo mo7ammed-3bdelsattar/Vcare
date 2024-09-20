@@ -35,6 +35,7 @@ $info=$db->fetchAll($result1);
 <script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="assets/dist/js/adminlte.min.js"></script>
+<script src="assets/dist/js/demo.js"></script>
 <script>
     const stars = document.querySelectorAll(".star");
 

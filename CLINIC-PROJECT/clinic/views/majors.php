@@ -7,9 +7,21 @@ require_once "classes/Database.php";
 
 $db = new Database();
 $conn = $db->connection('clinc');
-$result2 = $db->gitAll('majors');
-$major = $db->fetchAll($result2);
+if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+    $id = $_GET['id'];
+    $sql = "SELECT *  FROM `majors` WHERE `id`='$id' ";
+} else {
+    $sql = "SELECT *  FROM `majors`  ";
+}
 
+$result = mysqli_query($conn, $sql);
+if ($result) {
+    $major = $db->fetchAll($result);
+} else {
+    $sql = "SELECT *  FROM `majors`  ";
+    $result = mysqli_query($conn, $sql);
+    $major = $db->fetchAll($result);
+}
 
 ?>
 
@@ -23,19 +35,29 @@ $major = $db->fetchAll($result2);
         </nav>
         <div class="majors-grid">
             <div class="d-flex flex-wrap gap-4 justify-content-center">
-                <?php foreach ($major as $key => $value) : ?>
-                    <div class="card p-2" style="width: 18rem;">
-                        <img src="<?= $major[$key]['image'] ?>" class="card-img-top rounded-circle card-image-circle" alt="major">
-                        <div class="card-body d-flex flex-column gap-1 justify-content-center">
-                            <h4 class="card-title fw-bold text-center"><?= $major[$key]['title'] ?></h4>
-                            <a href="<?= Functions::url('index.php?page=doctors&id=') . $major[$key]['id'] ?>" class="btn btn-outline-primary card-button">Browse Doctors</a>
+
+                <?php
+                if ($db->numRows($result) > 0) :
+                    foreach ($major as $key => $value) : ?>
+                        <div class="card p-2" style="width: 18rem;">
+                            <img src="<?= $major[$key]['image'] ?>" class="card-img-top rounded-circle card-image-circle" alt="major">
+                            <div class="card-body d-flex flex-column gap-1 justify-content-center">
+                                <h4 class="card-title fw-bold text-center"><?= $major[$key]['title'] ?></h4>
+                                <a href="<?= Functions::url('index.php?page=doctors&major_id=') . $major[$key]['id'] ?>" class="btn btn-outline-primary card-button">Browse Doctors</a>
+                            </div>
                         </div>
+                    <?php endforeach;
+                else :
+                    ?>
+                    <div class="text-center text-muted">
+                        <p>no majors fonded</p>
                     </div>
-                <?php endforeach; ?>
+                <?php endif;
+                ?>
             </div>
         </div>
 
-        <nav class="mt-5" aria-label="navigation">
+        <!-- <nav class="mt-5" aria-label="navigation">
             <ul class="pagination justify-content-center">
                 <li class="page-item">
                     <a class="page-link page-prev" href="#" aria-label="Previous">
@@ -52,7 +74,7 @@ $major = $db->fetchAll($result2);
                     </a>
                 </li>
             </ul>
-        </nav>
+        </nav> -->
     </div>
 </div>
 <?php require_once "includes/footer.php" ?>
