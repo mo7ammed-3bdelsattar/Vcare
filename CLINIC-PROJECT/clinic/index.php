@@ -90,7 +90,7 @@ if (isset($_GET['page'])) {
         case 'settings':
             require_once 'controllers/settings.php';
             break;
-        case 'settings':
+        case 'cancel':
             require_once 'controllers/cancel.php';
             break;
         case 'view_admin':
