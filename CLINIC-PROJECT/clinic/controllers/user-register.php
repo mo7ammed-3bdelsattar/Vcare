@@ -8,9 +8,6 @@ $db = new Database();
 $fun = new Functions();
 $logIn = new Validation();
 $conn = $db->connection('clinc');
-// $result= $db->gitAll('users');
-// $data=mysqli_fetch_assoc($result);
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $name = $logIn->sanitizer($_POST['name']);
     $phone = $logIn->sanitizer($_POST['phone']);
@@ -76,14 +73,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $sql = "INSERT INTO `users` (`name`, `email`, `password`,`phone`,`type`)
         VALUES ('$name', '$email', '$password',  '$phone','user')";
         $result = mysqli_query($conn, $sql);
-        $_SESSION['auth'] = [
-            'name' => $name,
-            'email' => $email,
-            'phone' => $phone,
-            'type' => 'user'
-        ];
+    
         $_SESSION['success'] = "Congratolation $name now you have an accont";
-        $fun->redirect('index.php?page=register');
+        $fun->redirect('index.php?page=login');
     } else {
         $_SESSION['errors'] = $errors;
         $fun->redirect('index.php?page=register');

@@ -9,8 +9,11 @@ if (isset($_GET['page'])) {
         case 'home':
             require_once 'views/index.php';
             break;
-        case 'profile':
-            require_once 'views/profile.php';
+        case 'profile-doc':
+            require_once 'views/profile-doc.php';
+            break;
+        case 'profile-user':
+            require_once 'views/profile-user.php';
             break;
         case 'contact':
             require_once 'views/contact.php';
@@ -50,6 +53,12 @@ if (isset($_GET['page'])) {
             break;
         case 'admin':
             require_once 'admin/index.php';
+        case 'settings':
+            require_once 'controllers/settings.php';
+            break;
+        case 'view_admin':
+            require_once 'dashbord/view.php';
+
             break;
         default:
             require_once 'views/index.php';

@@ -9,7 +9,7 @@ require_once "classes/Functions.php";
         <ol class="breadcrumb justify-content-center">
             <li class="breadcrumb-item"><a class="text-decoration-none" href="./index.php">Home</a></li>
             <li class="breadcrumb-item active" aria-current="page">Contact</li>
-        </ol>
+        </ol>  
     </nav>
     <!-- Content Header (Page header) -->
 

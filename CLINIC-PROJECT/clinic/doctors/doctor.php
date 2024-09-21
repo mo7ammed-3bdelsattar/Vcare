@@ -1,5 +1,4 @@
 <?php
-session_start();
 $title ='Book';
  require_once "includes/header.php";
  require_once "includes/nav.php";

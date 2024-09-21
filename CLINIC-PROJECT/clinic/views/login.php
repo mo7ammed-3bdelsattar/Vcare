@@ -1,17 +1,30 @@
 <?php
-$func=new Functions();
-if(isset($_SESSION['auth'])){$func->redirect('index.php');}
+$func = new Functions();
+if (isset($_SESSION['auth'])) {
+    $func->redirect('index.php');
+}
 $title = "Registration Page";
 require_once "includes/header.php";
 require_once "includes/nav.php";
-
-
 ?>
 
 <div class="hold-transition register-page">
     <div class="register-box">
         <div class="register-logo">
             <a href=""><b>VCare</b></a>
+            <?php if (isset($_SESSION['success'])) :
+
+                                echo "<script>
+                    Swal.fire({
+                        title: 'Welcome!',
+                        text: ' $_SESSION[success]',
+                        icon: 'success'
+                    });
+                    </script>";
+                unset($_SESSION['success']);
+                $func->redirectAfter(Functions::url('index.php'), 3);
+            endif;
+            ?>
         </div>
         <div class="card">
             <div class="card-body register-card-body text-center">
@@ -24,19 +37,18 @@ require_once "includes/nav.php";
                                 <span class="fas fa-envelope"></span>
                             </div>
                         </div>
-                        <span class = "text-danger"><?= $_SESSION['errors']['email'] ?? ""; ?></span>
+                        <span class="text-danger"><?= $_SESSION['errors']['email'] ?? ""; ?></span>
                     </div>
 
                     <div class="input-group mb-3">
-                        <input type="password"  class="form-control" id="password" name="password" placeholder="Password">
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Password">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
                             </div>
                         </div>
-                        <span class = "text-danger"><?= $_SESSION['errors']['password'] ?? ""; ?></span>
+                        <span class="text-danger"><?= $_SESSION['errors']['password'] ?? ""; ?></span>
                     </div>
-
                     <div class="row">
                         <!-- /.col -->
                         <div class="col-4">
@@ -55,4 +67,3 @@ require_once "includes/nav.php";
 <?php
 unset($_SESSION['errors']);
 require_once "includes/footer.php" ?>
-
