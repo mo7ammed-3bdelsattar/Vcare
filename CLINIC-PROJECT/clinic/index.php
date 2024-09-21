@@ -51,11 +51,14 @@ if (isset($_GET['page'])) {
         case 'patients':
             require_once 'controllers/patients.php';
             break;
+        case 'admin':
+            require_once 'admin/index.php';
         case 'settings':
             require_once 'controllers/settings.php';
             break;
         case 'view_admin':
             require_once 'dashbord/view.php';
+
             break;
         default:
             require_once 'views/index.php';
