@@ -59,9 +59,9 @@ $result=$db->gitAll('users');
                                     <td><?= $user['email'] ?></td>
                                     <td><?= $user['phone'] ?></td>
                                     <td><?= $user['type'] ?></td>
-                                    <td><a href="" class="btn btn-info">
+                                    <td><a href="<?= Functions::urlAdmin('index.php?page=edit-user&id=').$user['id'] ?>" class="btn btn-info">
                                             <i class="fa fa-fw fa-edit text-dark "></i></a></td>
-                                    <td><a href="" data-confirm="Are you sure to delete this item?" class=" delete btn btn-danger ">
+                                    <td><a href="<?= Functions::urlAdmin('index.php?page=deleteUse&id=').$user['id'] ?>" data-confirm="Are you sure to delete this item?" class=" delete btn btn-danger ">
                                             <i class="fa fa-fw fa-trash text-dark "></i></a></td>
                                 </tr>
                                 <?php endwhile; ?>
@@ -72,7 +72,7 @@ $result=$db->gitAll('users');
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer clearfix">
-                    <a href="javascript:void(0)" class="btn btn-sm btn-info float-left">Place New User</a>
+                    <a href="<?= Functions::urlAdmin('index.php?page=add-user') ?>" class="btn btn-sm btn-info float-left">Place New User</a>
                 </div>
                 <!-- /.card-footer -->
             </div>

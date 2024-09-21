@@ -55,9 +55,9 @@ $result=$db->gitAll('majors');
                                     <td><a href=""></a><?= $major['id'] ?></td>
                                     <td><?= $major['title'] ?></td>
                                     <td>../<?= $major['image'] ?></td>
-                                    <td><a href="" class="btn btn-info">
+                                    <td><a href="<?= Functions::urlAdmin('index.php?page=edit-major&id=').$major['id']  ?>" class="btn btn-info">
                                             <i class="fa fa-fw fa-edit text-dark "></i></a></td>
-                                    <td><a href="" data-confirm="Are you sure to delete this item?" class=" delete btn btn-danger ">
+                                    <td><a href="<?= Functions::urlAdmin('index.php?page=deleteMaj&id=').$major['id']  ?>" data-confirm="Are you sure to delete this item?" class=" delete btn btn-danger ">
                                             <i class="fa fa-fw fa-trash text-dark "></i></a></td>
                                 </tr>
                                 <?php endwhile; ?>
@@ -68,7 +68,7 @@ $result=$db->gitAll('majors');
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer clearfix">
-                    <a href="javascript:void(0)" class="btn btn-sm btn-info float-left">Place New Major</a>
+                    <a href="<?= Functions::urlAdmin('index.php?page=add-major') ?>" class="btn btn-sm btn-info float-left">Place New Major</a>
                 </div>
                 <!-- /.card-footer -->
             </div>

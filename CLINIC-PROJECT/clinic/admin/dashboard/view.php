@@ -19,9 +19,8 @@ $conn = $db->connection('clinc');
     // $fun->dd(mysqli_error($conn));
 
 
-
-
-$result2 = $db->gitAll('users');
+    $sql="SELECT * FROM `users` ORDER BY `id` ASC LIMIT 4";
+$result2 = $db->query($conn,$sql);
 $members = $db->totalRows('users');
 $visitors = $db->totalRows('visitors');
 
@@ -135,12 +134,20 @@ $visitors = $db->totalRows('visitors');
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php while($book=$db->fetchAssoc($result1)): ?>
+                                    <?php while($book=$db->fetchAssoc($result1)):
+                                        if($book['status']=='pending'){
+                                            $color='warning';
+                                        }elseif($book['status']=='visited'){
+                                            $color='success';
+                                        }else{
+                                            $color='danger';
+                                        }
+                                        ?>
                                     <tr>
                                         <td><a href="pages/examples/invoice.html"><?=$book['id']?></a></td>
                                         <td><?=$book['name']?></td>
                                         <td><span class=""><?=$book['doc_name']?></span></td>
-                                        <td><span class="badge badge-warning"><?=$book['status']?></span></td>
+                                        <td><span class="badge badge-<?=$color?>"><?=$book['status']?></span></td>
                                         <td>
                                             <div class="sparkbar" data-color="#00a65a" data-height="20"><?=$book['date']?></div>
                                         </td>
@@ -187,7 +194,7 @@ $visitors = $db->totalRows('visitors');
                             </div>
                             <!-- /.card-body -->
                             <div class="card-footer text-center">
-                                <a href="javascript:">View All Users</a>
+                                <a href="<?= Functions::urlAdmin('index.php?page=users') ?>">View All Users</a>
                             </div>
                             <!-- /.card-footer -->
                         </div>

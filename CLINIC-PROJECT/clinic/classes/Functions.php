@@ -20,6 +20,10 @@ public function redirect($url)
 {
      header('Location:'.Functions::url($url));
     exit;
+}public function redirectAdmin($url)
+{
+     header('Location:'.Functions::urlAdmin($url));
+    exit;
 }
 public function sanitizeInput($input)
 {
