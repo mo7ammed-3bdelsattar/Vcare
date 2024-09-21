@@ -42,7 +42,7 @@ require_once "classes/Functions.php";
 
                 <a class="nav-icon position-relative text-decoration-none" href="<?php
                     if($_SESSION['auth']['type']=="admin"): echo
-                    Functions::url('index.php?page=view_admin') ;
+                    Functions::urlAdmin('index.php?page=profile') ;
                     elseif($_SESSION['auth']['type']=='doctor'):
                         echo Functions::url('index.php?page=profile-doc');
                     else: 

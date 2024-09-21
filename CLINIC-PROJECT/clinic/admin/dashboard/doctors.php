@@ -65,9 +65,9 @@ $result=$db->query($conn,$sql);
                                         <td>
                                             <div class="sparkbar" data-color="#00a65a" data-height="20"><?= $doctor['title'] ?></div>
                                         </td>
-                                        <td><a href="" class="btn btn-info">
+                                        <td><a href="<?=Functions::urlAdmin('index.php?page=edit-doctor&id=').$doctor['id']?>" class="btn btn-info">
                                                 <i class="fa fa-fw fa-edit text-dark "></i></a></td>
-                                        <td><a href="" data-confirm="Are you sure to delete this item?" class=" delete btn btn-danger ">
+                                        <td><a href="<?= Functions::urlAdmin('index.php?page=deleteDoc&id=').$doctor['id']  ?>" data-confirm="Are you sure to delete this item?" class=" delete btn btn-danger ">
                                                 <i class="fa fa-fw fa-trash text-dark "></i></a></td>
                                     
                                 </tr>
@@ -79,7 +79,7 @@ $result=$db->query($conn,$sql);
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer clearfix">
-                    <a href="javascript:void(0)" class="btn btn-sm btn-info float-left">Place New User</a>
+                    <a href="<?= Functions::urlAdmin('index.php?page=add-doctor') ?>" class="btn btn-sm btn-info float-left">Place New Doctor</a>
                 </div>
                 <!-- /.card-footer -->
             </div>

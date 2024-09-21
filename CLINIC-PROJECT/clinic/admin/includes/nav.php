@@ -15,7 +15,10 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="<?= Functions::urlAdmin('index.php') ?>" class="nav-link">Home</a>
+        <a href="<?= Functions::urlAdmin('index.php') ?>" class="nav-link">View</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="<?= Functions::url('index.php') ?>" class="nav-link">Home</a>
       </li>
     </ul>
 
@@ -54,7 +57,7 @@
           <i class="fas fa-expand-arrows-alt"></i>
         </a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item dropdown">
         <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
           <i class="fas fa-th-large"></i>
         </a>
