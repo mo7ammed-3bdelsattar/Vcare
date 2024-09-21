@@ -16,14 +16,19 @@ $info=$db->fetchAll($result1);
         </div>
         <div class="col-sm order-sm-2">
             <h1 class="h1">Links</h1>
+           
             <div class="links d-flex gap-2 flex-wrap">
+                <?php if(!isset($_SESSION['auth']) || $_SESSION['auth']['type']!='doctor'): ?>
                 <a href="<?= Functions::url('index.php?page=home') ?>" class="link text-white">Home</a>
                 <a href="<?= Functions::url('index.php?page=majors') ?>" class="link text-white">Majors</a>
                 <a href="<?= Functions::url('index.php?page=doctors') ?>" class="link text-white">Doctors</a>
                 <a href="<?= Functions::url('index.php?page=login') ?>" class="link text-white">Login</a>
-                <a href="<?= Functions::url('index.php?page=register') ?>" class="link text-white">Register</a>
+                <a href="<?= Functions::url('index.php?page=register') ?>" class="link text-white">Register</a> 
+                <a href="<?= Functions::url('index.php?page=apply') ?>" class="link text-white">Apply</a> 
+                <?php endif; ?>
                 <a href="<?= Functions::url('index.php?page=contact') ?>" class="link text-white">Contact</a>
             </div>
+            
         </div>
     </div>
 </footer>

@@ -8,11 +8,13 @@ $func = new Functions();
 $db = new Database();
 $conn = $db->connection('clinc');
 $result1 = $db->gitAll('info');
+$sql1="SELECT * FROM `doctors` ORDER BY `visitors` ASC LIMIT 5";
 $result2 = $db->gitAll('majors');
-$result3 = $db->gitAll('doctors');
+$result3 = $db->query($conn,$sql1);
 $info = $db->fetchAll($result1);
 $major = $db->fetchAll($result2);
 $doctor = $db->fetchAll($result3);
+
 ?>
 
 <div class="page-wrapper">
@@ -37,13 +39,13 @@ $doctor = $db->fetchAll($result3);
                     <img src="<?= $major[$key]['image'] ?>" class="card-img-top rounded-circle card-image-circle" alt="major">
                     <div class="card-body d-flex flex-column gap-1 justify-content-center">
                         <h4 class="card-title fw-bold text-center"><?= $major[$key]['title'] ?></h4>
-                        <a href="<?= Functions::url('index.php?page=doctors&ma_id=') . $major[$key]['id'] ?>" class="btn btn-outline-primary card-button">Browse Doctors</a>
+                        <a href="<?= Functions::url('index.php?page=doctors&major_id=') . $major[$key]['id'] ?>" class="btn btn-outline-primary card-button">Browse Doctors</a>
                     </div>
                 </div>
             <?php endforeach; ?>
         </div>
 
-        <h2 class="h1 fw-bold text-center my-4">doctors</h2>
+        <h2 class="h1 fw-bold text-center my-4">Best 5 Doctors</h2>
         <section class="splide home__slider__doctors mb-5">
             <div class="splide__track ">
                 <ul class="splide__list">
@@ -54,7 +56,9 @@ $doctor = $db->fetchAll($result3);
                                 <div class="card-body d-flex flex-column gap-1 justify-content-center">
                                     <h4 class="card-title fw-bold text-center"><?= $doctor[$key]['name'] ?></h4>
                                     <h6 class="card-title fw-bold text-center"><?= $major[$key]['title'] ?></h6>
-                                    <a href="<?= Functions::url('index.php?page=book&id=').$doctor[$key]['id']  ?>" class="btn btn-outline-primary card-button">Book an
+                                    <a href="<?php if(isset($_SESSION['auth'])){echo Functions::url('index.php?page=book&id=').$doctor[$key]['id']; } 
+                                                        else{echo Functions::url('index.php?page=login');}
+                                    ?>" class="btn btn-outline-primary card-button">Book an
                                         appointment</a>
                                 </div>
                             </div>

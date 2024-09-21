@@ -8,8 +8,7 @@ $db=new Database();
 $fun=new Functions();
 $logIn = new Validation();
 
-// $result= $db->gitAll('contact_us');
-// $data=mysqli_fetch_assoc($result);
+
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $name=$logIn->sanitizer($_POST['name']);
@@ -24,10 +23,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if(!$emailReq){
         $errors['email']="email is required";
     }
-    elseif(!$$logIn->require($subject)){
+    elseif(!$logIn->require($subject)){
         $errors['subject']="subject is required";
     }
-    elseif(!$$logIn->require($message)){
+    elseif(!$logIn->require($message)){
         $errors['message']="message is required";
     }
 
@@ -50,12 +49,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
     if(empty($errors)){
-        // $password=sha1($password);
-        // $confirm=sha1($confirm);
-        // $sql="INSERT INTO `contact_us` (`name`, `email`, `subject`,`message`)
-        //  VALUES ('$name', '$email', '$subject',  '$message')";
-        // $result=mysqli_query($conn,$sql);
-        $fun->redirect('index.php');
+       
+         $sql="INSERT INTO `contact_us` (`name`, `email`, `subject`,`message`)
+          VALUES ('$name', '$email', '$subject',  '$message')";
+         $result=mysqli_query($conn,$sql);
+         $_SESSION['success']="we will take a look at your messages";
+        $fun->redirect('index.php?page=contact_us');
     }
     else{
         $_SESSION['errors']=$errors;
