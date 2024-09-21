@@ -15,7 +15,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 }
 
 $result = mysqli_query($conn, $sql);
-if ($result) {
+if ($result) { 
     $major = $db->fetchAll($result);
 } else {
     $sql = "SELECT *  FROM `majors`  ";

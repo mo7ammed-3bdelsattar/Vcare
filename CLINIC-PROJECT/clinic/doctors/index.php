@@ -56,7 +56,9 @@ if ($result) {
                         <div class="card-body d-flex flex-column gap-1 justify-content-center">
                             <h4 class="card-title fw-bold text-center"><?= $doctor[$key]['name'] ?></h4>
                             <h6 class="card-title fw-bold text-center"><?= $doctor[$key]['title'] ?></h6>
-                            <a href="<?= Functions::url('index.php?page=book&id=') . $doctor[$key]['id'] ?>" class="btn btn-outline-primary card-button">Book (<?=$doctor[$key]['price']?>$)</a>
+                            <a href="<?php if(isset($_SESSION['auth'])){echo Functions::url('index.php?page=book&id=').$doctor[$key]['id']; } 
+                                                        else{echo Functions::url('index.php?page=login');}
+                                    ?>" class="btn btn-outline-primary card-button">Book (<?=$doctor[$key]['price']?>$)</a>
                         </div>
                     </div>
                 <?php endforeach;

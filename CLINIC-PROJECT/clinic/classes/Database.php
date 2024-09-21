@@ -14,7 +14,7 @@ class Database {
     }
     public function query($conn, $query){
         $result = mysqli_query($conn, $query);
-        return $result;
+        return $result; 
     }
     public function fetchAssoc($result){
         return mysqli_fetch_assoc($result);
@@ -41,7 +41,7 @@ class Database {
     }
     public function updateRow($table_name,$data,$id){
         global $conn;
-        $set = '';
+        $set = ''; 
         foreach($data as $key => $value){
             $set.= "`$key` = '$value',";
         }

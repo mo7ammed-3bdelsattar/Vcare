@@ -57,15 +57,25 @@ class Validation{
     public function matchPattern($input1, $regex){
         return preg_match($regex, $input1);
     }
-    public function validateImage($file){
-        $allowedMimeTypes = array("image/jpeg", "image/gif", "image/png");
-        $extension = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
-        return in_array($file['type'], $allowedMimeTypes) && $extension == "jpg" || $extension == "png" || $extension == "gif";
-    }
+    
     public function alpha($input){
         return preg_match('/^[a-zA-Z\s]+$/', $input);
     }
     public function phoneLength($input){
         return strlen($input) == 11;
+    }
+    public function validationImage($input){
+        $ext = pathinfo($input, PATHINFO_EXTENSION);
+        $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
+        if (!in_array($ext, $allowedExtensions)) {
+            return false;
+        }
+        $mimeType = mime_content_type($input);
+            $allowedMimeTypes = ['image/jpeg', 'image/png', 'image/gif'];
+        if (!in_array($mimeType, $allowedMimeTypes)) {
+            return false;
+        }
+    
+        return true;
     }
 }

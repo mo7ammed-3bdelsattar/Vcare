@@ -2,7 +2,7 @@
 
 
 class Functions{
-
+ 
 
   public function dd($data)
 {
