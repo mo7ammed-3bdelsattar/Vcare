@@ -29,5 +29,9 @@ public static function url($url){
     return "http://127.0.0.1/vCare/CLINIC-PROJECT/clinic/".$url;
 
 }
+public static function urlAdmin($url){
+    return "http://127.0.0.1/vCare/CLINIC-PROJECT/clinic/admin/".$url;
+
+}
 
 }
