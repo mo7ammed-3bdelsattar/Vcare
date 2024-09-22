@@ -11,7 +11,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         foreach ($_POST as $key => $value) {
             $$key = $Edit->sanitizer($value);
         }
-
         $nameReq = $Edit->require($name);
         if (!$nameReq) {
             $errors['name'] = "required";
@@ -54,11 +53,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     $phone = $user['phone'];
                 }else {
                     $errors['phone'] = "this phone is already exist";}
-    
             }
         }
-
-
         if (empty($errors)) {
             $sql = "UPDATE `users` SET 
         `name`='$name', `email`='$email',`phone`='$phone',`type`='$type' WHERE `id`='$id'";
