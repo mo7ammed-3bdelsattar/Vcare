@@ -26,7 +26,7 @@ if(isset($_GET['id'])){
             $_SESSION['success']= "User deleted succesfully";
              $fun->redirectAdmin('index.php?page=users');
         } catch (Exception $e) {
-             $_SESSION['errors']= $e->getMessage();
+             $_SESSION['errors']= "Cannot delete this user.";
              $fun->redirectAdmin('index.php?page=users');
         }
         }
