@@ -7,26 +7,10 @@ require_once 'includes/nav.php';
 $sql = "SELECT `doctors`.* , `majors`.`id` AS maj_id ,`majors`.`title` FROM 
 `doctors` INNER JOIN `majors` ON `majors`.`id`=`doctors`.`major_id`
 ";
-$result=$db->query($conn,$sql);
+$result = $db->query($conn, $sql);
 
 ?>
- <?php if (isset($_SESSION['success'])) : ?>
-        <div class="alert alert-success text-center">
-            <?php
-            echo $_SESSION['success'];
-            unset($_SESSION['success']);
-            ?>
-        </div>
-    <?php endif; ?>
-    
-    <?php if (isset($_SESSION['errors'])) : ?>
-        <div class="alert alert-danger text-center">
-            <?php
-            echo $_SESSION['errors'];
-            unset($_SESSION['errors']);
-            ?>
-        </div>
-    <?php endif; ?>
+
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
@@ -46,6 +30,23 @@ $result=$db->query($conn,$sql);
     </div>
     <section class="content">
         <div class="container-fluid">
+            <?php if (isset($_SESSION['success'])) : ?>
+                <div class="alert alert-success text-center">
+                    <?php
+                    echo $_SESSION['success'];
+                    unset($_SESSION['success']);
+                    ?>
+                </div>
+            <?php endif; ?>
+
+            <?php if (isset($_SESSION['errors'])) : ?>
+                <div class="alert alert-danger text-center">
+                    <?php
+                    echo $_SESSION['errors'];
+                    unset($_SESSION['errors']);
+                    ?>
+                </div>
+            <?php endif; ?>
             <!-- Info boxes -->
             <div class="card">
                 <div class="card-header border-transparent">
@@ -73,8 +74,8 @@ $result=$db->query($conn,$sql);
                                 </tr>
                             </thead>
                             <tbody>
-                            <?php while ($doctor = $db->fetchAssoc($result)) : ?>
-                                <tr>
+                                <?php while ($doctor = $db->fetchAssoc($result)) : ?>
+                                    <tr>
                                         <td><a href="#"><?= $doctor['id'] ?></a></td>
                                         <td><?= $doctor['name'] ?></td>
                                         <td><?= $doctor['email'] ?></td>
@@ -82,12 +83,12 @@ $result=$db->query($conn,$sql);
                                         <td>
                                             <div class="sparkbar" data-color="#00a65a" data-height="20"><?= $doctor['title'] ?></div>
                                         </td>
-                                        <td><a href="<?=Functions::urlAdmin('index.php?page=edit-doctor&id=').$doctor['id']?>" class="btn btn-info">
+                                        <td><a href="<?= Functions::urlAdmin('index.php?page=edit-doctor&id=') . $doctor['id'] ?>" class="btn btn-info">
                                                 <i class="fa fa-fw fa-edit text-dark "></i></a></td>
-                                        <td><a href="<?= Functions::urlAdmin('index.php?page=deleteDoc&id=').$doctor['id']  ?>" data-confirm="Are you sure to delete this item?" class=" delete btn btn-danger ">
+                                        <td><a href="<?= Functions::urlAdmin('index.php?page=deleteDoc&id=') . $doctor['id']  ?>" data-confirm="Are you sure to delete this item?" class=" delete btn btn-danger ">
                                                 <i class="fa fa-fw fa-trash text-dark "></i></a></td>
-                                    
-                                </tr>
+
+                                    </tr>
                                 <?php endwhile; ?>
                             </tbody>
                         </table>

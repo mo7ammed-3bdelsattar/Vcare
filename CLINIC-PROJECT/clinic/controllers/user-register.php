@@ -1,7 +1,5 @@
 <?php
-session_start();
 $errors = [];
-$db = new Database();
 $fun = new Functions();
 $logIn = new Validation();
 $conn = $db->connection('clinc');
@@ -54,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     if (!$logIn->require($password)) {
-        $errors['password'] = "password is required";
+        $errors['password'] = "required";
     }
     if (!$logIn->require($confirm)) {
         $errors['confirm'] = "required";

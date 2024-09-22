@@ -22,7 +22,6 @@ require_once "includes/nav.php";
                     });
                     </script>";
                 unset($_SESSION['success']);
-                $func->redirectAfter(Functions::url('index.php'), 3);
             endif;
             ?>
         </div>

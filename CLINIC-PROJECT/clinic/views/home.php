@@ -58,8 +58,7 @@ $doctor = $db->fetchAll($result3);
                                     <h6 class="card-title fw-bold text-center"><?= $major[$key]['title'] ?></h6>
                                     <a href="<?php if(isset($_SESSION['auth'])){echo Functions::url('index.php?page=book&id=').$doctor[$key]['id']; } 
                                                         else{echo Functions::url('index.php?page=login');}
-                                    ?>" class="btn btn-outline-primary card-button">Book an
-                                        appointment</a>
+                                    ?>" class="btn btn-outline-primary card-button">Book: <?= $doctor[$key]['price'] ?>LE </a>
                                 </div>
                             </div>
                         </li>

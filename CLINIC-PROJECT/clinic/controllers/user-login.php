@@ -1,7 +1,6 @@
 <?php
 
 $errors = [];
-$db = new Database();
 $fun = new Functions();
 $logIn = new Validation();
 $conn = $db->connection('clinc');

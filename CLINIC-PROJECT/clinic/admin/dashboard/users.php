@@ -1,28 +1,12 @@
 <?php
-$title='Users';
+$title = 'Users';
 require_once 'includes/header.php';
 require_once 'includes/nav.php';
 
-$result=$db->gitAll('users');
+$result = $db->gitAll('users');
 
 ?>
- <?php if (isset($_SESSION['success'])) : ?>
-        <div class="alert alert-success text-center">
-            <?php
-            echo $_SESSION['success'];
-            unset($_SESSION['success']);
-            ?>
-        </div>
-    <?php endif; ?>
-    
-    <?php if (isset($_SESSION['errors'])) : ?>
-        <div class="alert alert-danger text-center">
-            <?php
-            echo $_SESSION['errors'];
-            unset($_SESSION['errors']);
-            ?>
-        </div>
-    <?php endif; ?>
+
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
@@ -42,6 +26,23 @@ $result=$db->gitAll('users');
     </div>
     <section class="content">
         <div class="container-fluid">
+            <?php if (isset($_SESSION['success'])) : ?>
+                <div class="alert alert-success text-center">
+                    <?php
+                    echo $_SESSION['success'];
+                    unset($_SESSION['success']);
+                    ?>
+                </div>
+            <?php endif; ?>
+
+            <?php if (isset($_SESSION['errors'])) : ?>
+                <div class="alert alert-danger text-center">
+                    <?php
+                    echo $_SESSION['errors'];
+                    unset($_SESSION['errors']);
+                    ?>
+                </div>
+            <?php endif; ?>
             <!-- Info boxes -->
             <div class="card">
                 <div class="card-header border-transparent">
@@ -69,18 +70,18 @@ $result=$db->gitAll('users');
                                 </tr>
                             </thead>
                             <tbody>
-                            <?php while ($user = $db->fetchAssoc($result)) : ?>
-                                <tr>
-                                    <td><a href="#"><?= $user['id'] ?></a></td>
-                                    <td><?= $user['name'] ?></td>
-                                    <td><?= $user['email'] ?></td>
-                                    <td><?= $user['phone'] ?></td>
-                                    <td><?= $user['type'] ?></td>
-                                    <td><a href="<?= Functions::urlAdmin('index.php?page=edit-user&id=').$user['id'] ?>" class="btn btn-info">
-                                            <i class="fa fa-fw fa-edit text-dark "></i></a></td>
-                                    <td><a href="<?= Functions::urlAdmin('index.php?page=deleteUse&id=').$user['id'] ?>" data-confirm="Are you sure to delete this item?" class=" delete btn btn-danger ">
-                                            <i class="fa fa-fw fa-trash text-dark "></i></a></td>
-                                </tr>
+                                <?php while ($user = $db->fetchAssoc($result)) : ?>
+                                    <tr>
+                                        <td><a href="#"><?= $user['id'] ?></a></td>
+                                        <td><?= $user['name'] ?></td>
+                                        <td><?= $user['email'] ?></td>
+                                        <td><?= $user['phone'] ?></td>
+                                        <td><?= $user['type'] ?></td>
+                                        <td><a href="<?= Functions::urlAdmin('index.php?page=edit-user&id=') . $user['id'] ?>" class="btn btn-info">
+                                                <i class="fa fa-fw fa-edit text-dark "></i></a></td>
+                                        <td><a href="<?= Functions::urlAdmin('index.php?page=deleteUse&id=') . $user['id'] ?>" data-confirm="Are you sure to delete this item?" class=" delete btn btn-danger ">
+                                                <i class="fa fa-fw fa-trash text-dark "></i></a></td>
+                                    </tr>
                                 <?php endwhile; ?>
                             </tbody>
                         </table>
