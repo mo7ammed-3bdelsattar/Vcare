@@ -58,6 +58,15 @@ if (isset($_GET['page'])) {
         case 'addMaj':
             require_once 'controllers/addMaj.php';
             break;
+        case 'editUse':
+            require_once 'controllers/editUse.php';
+            break;
+        case 'editDoc':
+            require_once 'controllers/editDoc.php';
+            break;
+        case 'editMaj':
+            require_once 'controllers/editMaj.php';
+            break;
         case 'deleteUse':
             require_once 'controllers/deleteUser.php';
             break;

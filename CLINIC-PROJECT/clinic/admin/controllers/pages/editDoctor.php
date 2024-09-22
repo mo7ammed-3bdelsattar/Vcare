@@ -43,7 +43,7 @@ $result2 = $db->query($conn, $sql);
                         unset($_SESSION['success']);
                         ?></div>
                 <?php endif; ?>
-                <form action="<?= Functions::urlAdmin("index.php?page=addDoc") ?>" class="form border p-3" method="POST">
+                <form action="<?= Functions::urlAdmin("index.php?page=editDoc&id=").$doctor['id'] ?>" class="form border p-3" method="POST">
                     <div class="mb-3">
                         <div class="mb-3">
                             <label for="">Name</label>

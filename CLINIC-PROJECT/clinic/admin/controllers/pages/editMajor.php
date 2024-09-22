@@ -39,7 +39,7 @@ $major = $db->getRow('majors',$id);
                         unset($_SESSION['success']);
                         ?></div>
                 <?php endif; ?>
-                <form action="<?= Functions::urlAdmin("index.php?page=edit-major") ?>" class="form border p-3" method="POST">
+                <form action="<?= Functions::urlAdmin("index.php?page=editMaj&id=").$major['id'] ?>" class="form border p-3" method="POST">
                     <div class="mb-3">
                             <label for="">Title</label>
                             <input type="text" name="title" value="<?= $major['title'] ?>" class="form-control">
@@ -63,6 +63,7 @@ $major = $db->getRow('majors',$id);
 </div>
 
 <?php
+unset($_SESSION['errors']);
 endif;
 require_once 'includes/footer.php';
 ?>
