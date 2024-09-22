@@ -67,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_SESSION['errors']="Doctor not edited";
         }else{
         $_SESSION['success'] = "Doctor edited succesfully";}
-        $fun->redirectAdmin('index.php?page=edit-doctor&id='.$id);
+        $fun->redirectAdmin('index.php?page=doctors');
     } else {
         $_SESSION['errors'] = $errors;
         $fun->redirectAdmin('index.php?page=edit-doctor&id='.$id);

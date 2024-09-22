@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
          $sql="INSERT INTO `apply` (`name`, `email`, `phone`,`image`,`major_id`)
          VALUES ('$name', '$email', '$phone',  '$image', '$major')";
          $result=mysqli_query($conn,$sql);
-         $_SESSION['success']="we will review your application";
+         $_SESSION['success']="We will keep you updated on your order status.";
         $fun->redirect('index.php?page=apply');
     }
     else{

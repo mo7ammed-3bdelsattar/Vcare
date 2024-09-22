@@ -6,23 +6,16 @@ $fun = new Functions();
 $conn = $db->connection('clinc');
 
 
-    $sql="SELECT `books`.* ,`doctors`.`id` AS doc_id ,`doctors`.`price`
+$sql = "SELECT `books`.* ,`doctors`.`id` AS doc_id ,`doctors`.`price`
     FROM `books` INNER JOIN `doctors` ON  `doctors`.`id`=`books`.`doctor_id` WHERE `books`.`status`='visited'";
-    $result=$db->query($conn,$sql);
-    $sales=0;
-    while($visitor=$db->fetchAssoc($result)){
-        $sales=$sales+$visitor['price'];
-    }
-    $sql="SELECT `books`.* ,`doctors`.`id` AS doc_id ,`doctors`.`name` AS doc_name 
-    FROM `books` INNER JOIN `doctors` ON  `doctors`.`id`=`books`.`doctor_id`";
-    $result1=$db->query($conn,$sql);
-    // $fun->dd(mysqli_error($conn));
-
-
-    $sql="SELECT * FROM `users` ORDER BY `id` ASC LIMIT 4";
-$result2 = $db->query($conn,$sql);
+$result = $db->query($conn, $sql);
+$visitors = $db->numRows($result);
+$sales = 0;
+while ($visitor = $db->fetchAssoc($result)) {
+    $sales = $sales + $visitor['price'];
+}
 $members = $db->totalRows('users');
-$visitors = $db->totalRows('visitors');
+
 
 
 ?>
@@ -134,25 +127,31 @@ $visitors = $db->totalRows('visitors');
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php while($book=$db->fetchAssoc($result1)):
-                                        if($book['status']=='pending'){
-                                            $color='warning';
-                                        }elseif($book['status']=='visited'){
-                                            $color='success';
-                                        }else{
-                                            $color='danger';
+
+                                    <?php
+                                    $sql = "SELECT `books`.* ,`doctors`.`id` AS doc_id ,`doctors`.`name` AS doc_name 
+                                     FROM `books` INNER JOIN `doctors` ON  `doctors`.`id`=`books`.`doctor_id`";
+                                    $result1 = $db->query($conn, $sql);
+                                    $book = $db->fetchAll($result1);
+                                    foreach ($book as $key => $value) :
+                                        if ($book[$key]['status'] == 'pending') {
+                                            $color = 'warning';
+                                        } elseif ($book[$key]['status'] == 'visited') {
+                                            $color = 'success';
+                                        } else {
+                                            $color = 'danger';
                                         }
-                                        ?>
-                                    <tr>
-                                        <td><a href="pages/examples/invoice.html"><?=$book['id']?></a></td>
-                                        <td><?=$book['name']?></td>
-                                        <td><span class=""><?=$book['doc_name']?></span></td>
-                                        <td><span class="badge badge-<?=$color?>"><?=$book['status']?></span></td>
-                                        <td>
-                                            <div class="sparkbar" data-color="#00a65a" data-height="20"><?=$book['date']?></div>
-                                        </td>
-                                    </tr>
-                                    <?php endwhile; ?>
+                                    ?>
+                                        <tr>
+                                            <td><a href="pages/examples/invoice.html"><?= $book[$key]['id'] ?></a></td>
+                                            <td><?= $book[$key]['name'] ?></td>
+                                            <td><span class=""><?= $book[$key]['doc_name'] ?></span></td>
+                                            <td><span class="badge badge-<?= $color ?>"><?= $book[$key]['status'] ?></span></td>
+                                            <td>
+                                                <div class="sparkbar" data-color="#00a65a" data-height="20"><?= $book[$key]['date'] ?></div>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
                                 </tbody>
                             </table>
                         </div>
@@ -174,7 +173,7 @@ $visitors = $db->totalRows('visitors');
                                 <h3 class="card-title">Latest Members</h3>
 
                                 <div class="card-tools">
-                                    <span class="badge badge-danger"><?= $members ?> New Members</span>
+                                    <span class="badge badge-danger">4 New Members</span>
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                         <i class="fas fa-minus"></i>
                                     </button>
@@ -183,11 +182,15 @@ $visitors = $db->totalRows('visitors');
                             <!-- /.card-header -->
                             <div class="card-body p-0">
                                 <ul class="users-list clearfix">
-                                    <?php while($user=$db->fetchAssoc($result2)):?>
-                                    <li>
-                                        <img src="../<?= $user['image'] ?>" alt="User Image">
-                                        <a class="users-list-name" href="#"><?= $user['name'] ?></a>
-                                    </li>
+                                    <?php
+
+                                    $sql = "SELECT * FROM `users` ORDER BY `id` ASC LIMIT 4";
+                                    $result2 = $db->query($conn, $sql);
+                                    while ($user = $db->fetchAssoc($result2)) : ?>
+                                        <li>
+                                            <img src="../<?= $user['image'] ?>" alt="User Image">
+                                            <a class="users-list-name" href="#"><?= $user['name'] ?></a>
+                                        </li>
                                     <?php endwhile; ?>
                                 </ul>
                                 <!-- /.users-list -->

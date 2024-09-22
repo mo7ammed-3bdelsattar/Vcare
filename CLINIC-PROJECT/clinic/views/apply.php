@@ -33,8 +33,8 @@ $majorSelect = $db->fetchAssoc($result);
             <div class="card-body row">
                 <div class="col-5 text-center d-flex align-items-center justify-content-center">
                     <div class="">
-                        <h2>Admin<strong>LTE</strong></h2>
-                        <p class="lead mb-5">123 Testing Ave, Testtown, 9876 NA<br>
+                        <h2>Are you a Doctor?</h2>
+                        <p class="lead mb-5">
                             Phone: +1 234 56789012
                         </p>
                     </div>

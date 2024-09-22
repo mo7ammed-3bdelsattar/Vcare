@@ -3,25 +3,26 @@ session_start();
 require_once "classes/Functions.php";
 require_once "classes/validation.php";
 require_once "classes/Database.php";
-$db=new Database();
-$conn=$db->connection('clinc');
+$db = new Database();
+$conn = $db->connection('clinc');
 if (isset($_SESSION['auth']) && $_SESSION['auth']['type'] == 'doctor') {
     if (isset($_GET['page'])) {
         if ($_GET['page'] == 'logout') {
             $_GET['page'] = 'logout';
-        }
-        elseif ($_GET['page'] == 'settings') {
+        } elseif ($_GET['page'] == 'settings') {
             $_GET['page'] = 'settings';
-        }
-        elseif ($_GET['page'] == 'delete-book') {
+        } elseif ($_GET['page'] == 'delete-book') {
             $_GET['page'] = 'delete-book';
-        }
-         else {
+        } elseif ($_GET['page'] == 'contact') {
+            $_GET['page'] = 'contact';
+        } elseif ($_GET['page'] == 'contact-us') {
+            $_GET['page'] = 'contact-us';
+        } else {
             $_GET['page'] = "profile-doc";
         }
-    }else{
-        $_GET['page'] = "profile-doc";  
-     }
+    } else {
+        $_GET['page'] = "profile-doc";
+    }
 }
 if (isset($_GET['page'])) {
     switch ($_GET['page']) {

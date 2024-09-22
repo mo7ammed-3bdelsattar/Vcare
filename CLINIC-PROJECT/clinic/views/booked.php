@@ -48,7 +48,7 @@ $result = mysqli_query($conn, $sql);
             </div>
             <?php if($doctor['status']=='pending'): ?>
             <a href="<?= Functions::url('index.php?page=cancel&id='.$doctor['id']) ?>"
-            class="float-right btn-tool"><button class="btn btn-primary text-center">Calncel</button></a>
+            class="btn float-right btn-tool"><button class="btn btn-primary text-center">Calncel</button></a>
             <?php endif;?>
           </div>
         </div>

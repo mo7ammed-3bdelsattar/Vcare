@@ -62,9 +62,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $sql = "INSERT INTO `users` (`name`, `email`, `password`,`phone`,`type`)
         VALUES ('$name', '$email', '$password', '$phone','$type')";
         $result = mysqli_query($conn, $sql);
-    
+        if(!$result){
+            $_SESSION['errors']="Doctor not edited";
+        }else{
         $_SESSION['success'] = "User added succesfully";
-        $fun->redirectAdmin('index.php?page=add-user');
+        $fun->redirectAdmin('index.php?page=users');}
     } else {
         $_SESSION['errors'] = $errors;
         $fun->redirectAdmin('index.php?page=add-user');

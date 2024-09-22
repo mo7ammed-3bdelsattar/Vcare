@@ -60,9 +60,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $sql = "INSERT INTO `doctors` (`name`, `email`, `phone`,`image`,`days`,`start-end`,`user_id`,`major_id`,`price`)
         VALUES ('$name', '$email', '$phone', '$image','$days','$start_end','$user','$major','$price')";
         $result = mysqli_query($conn, $sql);
-
+        if(!$result){
+            $_SESSION['errors']="Doctor not edited";
+        }else{
         $_SESSION['success'] = "Doctor added succesfully";
-        $fun->redirectAdmin('index.php?page=add-doctor');
+        $fun->redirectAdmin('index.php?page=doctors');}
     } else {
         $_SESSION['errors'] = $errors;
         $fun->redirectAdmin('index.php?page=add-doctor');
