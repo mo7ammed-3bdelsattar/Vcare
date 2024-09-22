@@ -98,9 +98,9 @@ $numOfApply = $db->totalRows('apply');
             <i class="fas fa-users mr-2"></i> <?= $numOfApply ?> requests
           </a>
           <?php endif; ?>
-          <div class="dropdown-divider"></div>
+          <!-- <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-        </div>
+        </div> -->
       </li>
 
 

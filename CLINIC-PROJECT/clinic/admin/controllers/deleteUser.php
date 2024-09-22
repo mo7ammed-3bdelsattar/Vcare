@@ -10,8 +10,7 @@ if(isset($_GET['id'])){
         $_SESSION['errors']=  "connect error " . mysqli_error($conn);
     }
     $id = $_GET['id'];
-    $sql = "SELECT `doctors`.*,`majors`.`title` AS maj_title FROM `doctors` 
-    INNER JOIN `majors` on `majors`.`id`=`doctors`.`major_id`  WHERE `doctors`.`major_id` = '$id' ";
+    $sql = "SELECT * FROM `users` WHERE `id` = '$id'";
     $result = mysqli_query($conn,$sql);
     $row = mysqli_fetch_row($result);
   

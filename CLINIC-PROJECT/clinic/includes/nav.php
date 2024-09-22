@@ -20,7 +20,9 @@ require_once "classes/Functions.php";
                         <a type="button" class="btn text-light navigation--button" href="<?= Functions::url('index.php?page=home') ?>">Home</a>
                         <a type="button" class="btn text-light navigation--button" href="<?= Functions::url('index.php?page=majors') ?>">majors</a>
                         <a type="button" class="btn text-light navigation--button" href="<?= Functions::url('index.php?page=doctors') ?>">Doctors</a>
+                        <?php if(isset($_SESSION['auth'])): ?>
                         <a type="button" class="btn text-light navigation--button" href="<?= Functions::url('index.php?page=booked') ?>">Books</a>
+                            <?php endif;?>
                     </div>
                 <?php endif; ?>
                 </div>

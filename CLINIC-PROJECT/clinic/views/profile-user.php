@@ -18,7 +18,7 @@ $conn = $db->connection('clinc');
 
                     echo "<script>
                             Swal.fire({
-                                title: 'Welcome!',
+                                title: 'well done!',
                                 text: ' $_SESSION[success]',
                                 icon: 'success'
                             });

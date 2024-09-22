@@ -7,13 +7,14 @@ $conn = $db->connection('clinc');
 
 
 
-$sql = "SELECT `books`.* ,`doctors`.`id` AS doc_id ,`doctors`.`price`
+$sql = "SELECT `books`.* ,`doctors`.`id` AS doc_id ,`doctors`.`price`AS doc_price
     FROM `books` INNER JOIN `doctors` ON  `doctors`.`id`=`books`.`doctor_id` WHERE `books`.`status`='visited'";
 $result = $db->query($conn, $sql);
 $visitors = $db->numRows($result);
 $sales = 0;
-while ($visitor = $db->fetchAssoc($result)) {
-    $sales = $sales + $visitor['price'];
+$visitor = $db->fetchAll($result);
+foreach($visitor as $key =>$value) {
+    $sales = $sales + $visitor[$key]['doc_price'];
 }
 
 $members = $db->totalRows('users');
@@ -132,7 +133,7 @@ $members = $db->totalRows('users');
 
                                     <?php
                                     $sql = "SELECT `books`.* ,`doctors`.`id` AS doc_id ,`doctors`.`name` AS doc_name 
-                                     FROM `books` INNER JOIN `doctors` ON  `doctors`.`id`=`books`.`doctor_id`";
+                                     FROM `books` INNER JOIN `doctors` ON  `doctors`.`id`=`books`.`doctor_id` ORDER BY `books`.`id` ASC";
                                     $result1 = $db->query($conn, $sql);
                                     $book = $db->fetchAll($result1);
                                     foreach ($book as $key => $value) :
@@ -161,7 +162,7 @@ $members = $db->totalRows('users');
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer clearfix">
-                        <a href="javascript:void(0)" class="btn btn-sm btn-info float-left">Place New Book</a>
+                        <!-- <a href="javascript:void(0)" class="btn btn-sm btn-info float-left">Place New Book</a> -->
                     </div>
                     <!-- /.card-footer -->
                 </div>
@@ -186,7 +187,7 @@ $members = $db->totalRows('users');
                                 <ul class="users-list clearfix">
                                     <?php
 
-                                    $sql = "SELECT * FROM `users` ORDER BY `id` ASC LIMIT 4";
+                                    $sql = "SELECT * FROM `users` ORDER BY `id` DESC LIMIT 4";
                                     $result2 = $db->query($conn, $sql);
                                     while ($user = $db->fetchAssoc($result2)) : ?>
                                         <li>

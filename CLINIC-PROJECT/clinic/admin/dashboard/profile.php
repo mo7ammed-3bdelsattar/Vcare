@@ -1,6 +1,8 @@
 <?php
 $title = 'Profile';
 require_once "includes/header.php";
+$admin = $db->getRow('users', $_SESSION['auth']['id']);
+
 ?>
 <div class="wrapper">
     <?php require_once "includes/nav.php" ?>
@@ -30,10 +32,10 @@ require_once "includes/header.php";
                         <div class="card card-primary card-outline">
                             <div class="card-body box-profile">
                                 <div class="text-center">
-                                    <img class="profile-user-img img-fluid img-circle rounded-circle card-image-circle" src="../<?= $_SESSION['auth']['image'] ?>" alt="User profile picture">
+                                    <img class="profile-user-img img-fluid img-circle rounded-circle card-image-circle" src="../<?= $admin['image'] ?>" alt="User profile picture">
                                 </div>
 
-                                <h3 class="profile-username text-center"><?= $_SESSION['auth']['name'] ?></h3>
+                                <h3 class="profile-username text-center"><?= $admin['name'] ?></h3>
 
 
                             </div>
@@ -51,14 +53,14 @@ require_once "includes/header.php";
                                 <strong><span class="fas fa-envelope"></span> Email</strong>
 
                                 <p class="text-muted">
-                                    <?= $_SESSION['auth']['email'] ?>
+                                    <?= $admin['email'] ?>
                                 </p>
 
                                 <hr>
 
                                 <strong><span class="fas fa-phone"></span> Phone</strong>
 
-                                <p class="text-muted"><?= $_SESSION['auth']['phone'] ?></p>
+                                <p class="text-muted"><?= $admin['phone'] ?></p>
 
                                 <hr>
 

@@ -1,7 +1,4 @@
 <?php 
-require_once 'classes/validation.php';
-require_once 'classes/Database.php';
-require_once 'classes/Functions.php';
 $db = new Database();
 $fun = new Functions();
 $logIn = new Validation();
@@ -17,8 +14,6 @@ if (isset($_GET['pat_id']) && isset($_GET['doc_id'])) {
     if ($result) {
         $visitors = $doctor['visitors'] + 1;
         $sql = "UPDATE `doctors` SET `visitors`='$visitors' WHERE `id` = '$doc_id'";
-        $result = $db->query($conn, $sql);
-        $sql="INSERT INTO `visitors` (`doctor_id`, `user_id`) VALUES ('$doc_id','$pat_id')";
         $result = $db->query($conn, $sql);
     }
     $fun->redirect('index.php?page=profile-doc');

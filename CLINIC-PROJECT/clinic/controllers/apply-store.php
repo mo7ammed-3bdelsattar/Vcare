@@ -36,9 +36,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if(!$logIn->require($major)){
         $errors['major']="message is required";
     }
-    if(!$logIn->require($image)){
-        $errors['image']="message is required";
-    }
     // elseif(!$logIn->validationImage($image)){
     //     $errors['image']="image is not valid";
     // }

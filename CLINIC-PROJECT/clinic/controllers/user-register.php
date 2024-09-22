@@ -1,10 +1,5 @@
 <?php
-session_start();
-require_once 'classes/validation.php';
-require_once 'classes/Database.php';
-require_once 'classes/Functions.php';
 $errors = [];
-$db = new Database();
 $fun = new Functions();
 $logIn = new Validation();
 $conn = $db->connection('clinc');
@@ -14,7 +9,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $logIn->sanitizer($_POST['email']);
     $password = $logIn->sanitizer($_POST['password']);
     $confirm = $logIn->sanitizer($_POST['confirm']);
-
     $nameReq = $logIn->require($name);
     if (!$nameReq) {
         $errors['name'] = "required";
@@ -58,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     if (!$logIn->require($password)) {
-        $errors['password'] = "password is required";
+        $errors['password'] = "required";
     }
     if (!$logIn->require($confirm)) {
         $errors['confirm'] = "required";

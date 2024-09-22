@@ -8,7 +8,8 @@ $logIn = new Validation();
 $conn = $db->connection('clinc');
 $id = $_SESSION['auth']['id'];
 $sql = "SELECT `books`.*,`doctors`.`id` As doc_id ,`doctors`.`name` As doc_name ,`doctors`.`adress` As 
-doc_adress ,`doctors`.`image` As doc_image ,`doctors`.`days` As doc_days ,`doctors`.`start-end` As doc_start
+doc_adress ,`doctors`.`image` As doc_image ,`doctors`.`days` As doc_days 
+,`doctors`.`start-end` As doc_start,`doctors`.`price` As doc_price 
   FROM `books` INNER JOIN `doctors` ON `doctors`.`id`=`books`.`doctor_id`  WHERE `books`.`user_id` = '$id' AND `books`.`status` != 'cancelled' ";
 $result = mysqli_query($conn, $sql);
 ?>
@@ -17,7 +18,7 @@ $result = mysqli_query($conn, $sql);
   <div class="container-fluid py-5">
     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="fw-bold my-4 h4">
       <ol class="breadcrumb justify-content-center">
-        <li class="breadcrumb-item"><a class="text-decoration-none" href="./index.php">Home</a></li>
+        <li class="breadcrumb-item"><a class="text-decoration-none" href="<?=Functions::url('index.php')?>">Home</a></li>
         <li class="breadcrumb-item active" aria-current="page">Books</li>
       </ol>
     </nav>
@@ -36,6 +37,7 @@ $result = mysqli_query($conn, $sql);
                 <div class="col-7">
                   <h2 class="lead"><b>Doctor: <?= $doctor['doc_name'] ?></b></h2>
                   <p class="text-muted text-sm"><b>Status:</p><?= $doctor['status'] ?> </p> </b>
+                  <p class=" text-sm">Price: <?= $doctor['doc_price'] ?>LE </p>
                   <ul class="ml-4 mb-0 fa-ul text-muted">
                     <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Address: <?= $doctor['doc_adress'] ?></li>
                     <li class="small"><span class="fa-li"><i class="fas fa-lg fa-calendar"></i></span> Days: <?= $doctor['doc_days'] ?> From <?= $doctor['doc_start'] ?> </li>
