@@ -30,11 +30,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $sql = "INSERT INTO `majors` (`title`,`image`)
         VALUES ('$title', '$image')";
         $result = mysqli_query($conn, $sql);
+
         if(!$result){
             $_SESSION['errors']="Doctor not edited";
         }else{
         $_SESSION['success'] = "Major added succesfully";
         $fun->redirectAdmin('index.php?page=majors');}
+
     } else {
         $_SESSION['errors'] = $errors;
         $fun->redirectAdmin('index.php?page=add-major');
