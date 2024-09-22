@@ -1,8 +1,5 @@
 <?php
 session_start();
-require_once 'classes/validation.php';
-require_once 'classes/Database.php';
-require_once 'classes/Functions.php';
 $errors = [];
 $db = new Database();
 $fun = new Functions();
@@ -14,7 +11,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $logIn->sanitizer($_POST['email']);
     $password = $logIn->sanitizer($_POST['password']);
     $confirm = $logIn->sanitizer($_POST['confirm']);
-
     $nameReq = $logIn->require($name);
     if (!$nameReq) {
         $errors['name'] = "required";
