@@ -6,8 +6,8 @@ $fun = new Functions();
 $conn = $db->connection('clinc');
 
 
-    $sql="SELECT `visitors`.* ,`doctors`.`id` AS doc_id ,`doctors`.`price`
-    FROM `visitors` INNER JOIN `doctors` ON  `doctors`.`id`=`visitors`.`doctor_id`";
+    $sql="SELECT `books`.* ,`doctors`.`id` AS doc_id ,`doctors`.`price`
+    FROM `books` INNER JOIN `doctors` ON  `doctors`.`id`=`books`.`doctor_id` WHERE `books`.`status`='visited'";
     $result=$db->query($conn,$sql);
     $sales=0;
     while($visitor=$db->fetchAssoc($result)){
