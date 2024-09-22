@@ -7,6 +7,8 @@ $result1 = $db->gitAll('info');
 $info=$db->fetchAll($result1);
 ?>
 
+
+
 <footer class="container-fluid bg-blue text-white py-3">
     <div class="row gap-2">
 
@@ -41,6 +43,16 @@ $info=$db->fetchAll($result1);
 <!-- AdminLTE App -->
 <script src="assets/dist/js/adminlte.min.js"></script>
 <script src="assets/dist/js/demo.js"></script>
+<script src="assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+
+<!-- jQuery Mapael -->
+<script src="assets/plugins/jquery-mousewheel/jquery.mousewheel.js"></script>
+<script src="assets/plugins/raphael/raphael.min.js"></script>
+<script src="assets/plugins/jquery-mapael/jquery.mapael.min.js"></script>
+<script src="assets/plugins/jquery-mapael/maps/usa_states.min.js"></script>
+<!-- ChartJS -->
+<script src="assets/plugins/chart.js/Chart.min.js"></script>
+
 <script>
     const stars = document.querySelectorAll(".star");
 

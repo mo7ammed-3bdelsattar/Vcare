@@ -6,23 +6,7 @@ require_once 'includes/nav.php';
 $result=$db->gitAll('majors');
 
 ?>
-  <?php if (isset($_SESSION['success'])) : ?>
-        <div class="alert alert-success text-center">
-            <?php
-            echo $_SESSION['success'];
-            unset($_SESSION['success']);
-            ?>
-        </div>
-    <?php endif; ?>
-    
-    <?php if (isset($_SESSION['errors'])) : ?>
-        <div class="alert alert-danger text-center">
-            <?php
-            echo $_SESSION['errors'];
-            unset($_SESSION['errors']);
-            ?>
-        </div>
-    <?php endif; ?>
+  
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
@@ -42,6 +26,23 @@ $result=$db->gitAll('majors');
     </div>
     <section class="content">
         <div class="container-fluid">
+        <?php if (isset($_SESSION['success'])) : ?>
+        <div class="alert alert-success text-center">
+            <?php
+            echo $_SESSION['success'];
+            unset($_SESSION['success']);
+            ?>
+        </div>
+    <?php endif; ?>
+    
+    <?php if (isset($_SESSION['errors'])) : ?>
+        <div class="alert alert-danger text-center">
+            <?php
+            echo $_SESSION['errors'];
+            unset($_SESSION['errors']);
+            ?>
+        </div>
+    <?php endif; ?>
             <!-- Info boxes -->
             <div class="card">
                 <div class="card-header border-transparent">

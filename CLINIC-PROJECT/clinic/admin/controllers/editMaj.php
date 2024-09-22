@@ -35,7 +35,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_SESSION['errors']="Major not edited";
         }else{
         $_SESSION['success'] = "Major edited succesfully";
-        $fun->redirectAdmin('index.php?page=edit-major&id='.$id);}
+
+        $fun->redirectAdmin('index.php?page=majors');}
+
     } else {
         $_SESSION['errors'] = $errors;
         $fun->redirectAdmin('index.php?page=edit-major&id='.$id);

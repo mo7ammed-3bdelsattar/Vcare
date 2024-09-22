@@ -40,12 +40,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'&&isset($_GET['id'])) {
             $_SESSION['auth']['password']=$newPass;
             if($_SESSION['auth']['type'] =='user'){$fun->redirect('index.php?page=profile-user');}
             elseif($_SESSION['auth']['type'] =='doctor'){$fun->redirect('index.php?page=profile-doc');}
-            else{$fun->redirect('index.php?page=profile-admin');}
+            else{$fun->redirectAdmin('index.php?page=profile#settings');}
         }else{
             $_SESSION['errors']['db']='there was a problem updating password';
             if($_SESSION['auth']['type'] =='user'){$fun->redirect('index.php?page=profile-user#settings');}
             elseif($_SESSION['auth']['type'] =='doctor'){$fun->redirect('index.php?page=profile-doc#settings');}
-            else{$fun->redirect('index.php?page=profile-admin');}
+            else{$fun->redirectAdmin('index.php?page=profile#settings');}
         }
        
       
@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'&&isset($_GET['id'])) {
         $_SESSION['errors'] = $errors;
         if($_SESSION['auth']['type'] =='user'){$fun->redirect('index.php?page=profile-user#settings');}
         elseif($_SESSION['auth']['type'] =='doctor'){$fun->redirect('index.php?page=profile-doc#settings');}
-        else{$fun->redirect('index.php?page=profile-admin');}   
+        else{$fun->redirectAdmin('index.php?page=profile#settings');}   
      }
 }
 

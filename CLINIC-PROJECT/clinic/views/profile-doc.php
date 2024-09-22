@@ -95,9 +95,9 @@ $conn = $db->connection('clinc');
                     </div><!-- /.card-header -->
                     <div class="card-body">
                         <div class="tab-content">
-                            <?php if (isset($_SESSION['errors'])): ?>
+                            <?php if (isset($_SESSION['errors'])) : ?>
                                 <div class="tab-pane" id="activity">
-                                <?php else: ?>
+                                <?php else : ?>
                                     <div class="active tab-pane" id="activity">
                                     <?php endif; ?>
                                     <!-- Patient -->
@@ -106,20 +106,26 @@ $conn = $db->connection('clinc');
 
 
                                     ?>
-                                            <div class="container border">
+                                            <div class="container py-5">
                                                 <div class="row">
-                                                    
-                                                        <div class="user-block">
-                                                            <img class="img-circle img-bordered-sm" src="assets/images/users/00.png" alt="user image">
-                                                            <span class="username">
-                                                                <a href="#"><?= $patient['name'] ?></a>
+                                                    <div class="card col-md-4 text-center">
+                                                        <ul class="list-inline pb-3">
+                                                            <li class="list-inline-item text-right">
+                                                                <img class="img-circle img-bordered-sm" src="assets/images/users/00.png" alt="user image">
+                                                            </li>
+                                                            <li >
+                                                                <span class="username">
+                                                                    <h6><strong>Patient Name:</strong><?=$patient['name']?></h6>
+                                                                </span>
+                                                            </li>
+                                                            <li >
+                                                            <span class="description">Booked at: <?= $patient['date'] ?></span>
+                                                            </li>
+                                                        </ul>
+                                                        <a class="btn" href="<?= Functions::url('index.php?page=delete-book&pat_id=' . $patient['patient_id'] . '&doc_id=' . $id) ?>" class="float-right btn-tool"><button class="btn btn-primary text-center">Confirm</button></a>
 
-                                                            </span>
-                                                            <span class="description">Booked at: <?=$patient['date']?></span>
-                                                        </div>
-                                                        <a href="<?= Functions::url('index.php?page=delete-book&pat_id=' . $patient['patient_id'] . '&doc_id=' . $id) ?>"
-                                                            class="float-right btn-tool"><button class="btn btn-primary text-center">Confirm</button></a>
-                                                    
+                                                    </div>
+
                                                 </div>
                                             </div>
                                             <!-- /.Patient -->
@@ -131,9 +137,9 @@ $conn = $db->connection('clinc');
                                     <?php endif; ?>
                                     </div>
 
-                                    <?php if (isset($_SESSION['errors'])): ?>
+                                    <?php if (isset($_SESSION['errors'])) : ?>
                                         <div class="active tab-pane" id="settings">
-                                        <?php else: ?>
+                                        <?php else : ?>
                                             <div class="tab-pane" id="settings">
                                             <?php endif; ?>
 

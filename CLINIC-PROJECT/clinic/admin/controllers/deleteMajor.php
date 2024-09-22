@@ -5,7 +5,7 @@ $Add = new Validation();
 $conn = $db->connection('clinc');
 if(isset($_GET['id'])){
     if(!$conn){
-        $_SESSION['errors']=  "connect error " . mysqli_connect_error($conn);
+        $_SESSION['errors']=  "connect error " . mysqli_error($conn);
     }
     $id = $_GET['id'];
     $sql = "SELECT `doctors`.*,`majors`.`title` AS maj_title FROM `doctors` 

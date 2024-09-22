@@ -59,7 +59,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_SESSION['errors']="User not edited";
         }else{
         $_SESSION['success'] = "User edited succesfully";
-        $fun->redirectAdmin('index.php?page=edit-user&id='.$id);}
+
+        $fun->redirectAdmin('index.php?page=users');}
+
     } else {
         $_SESSION['errors'] = $errors;
         $fun->redirectAdmin('index.php?page=edit-user&id='.$id);
