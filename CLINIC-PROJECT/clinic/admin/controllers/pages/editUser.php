@@ -40,7 +40,7 @@ $user=$db->getRow('users',$id);
             unset($_SESSION['success']);
             ?></div>
     <?php endif; ?>
-    <form action="<?= Functions::urlAdmin("index.php?page=editUse") ?>" class="form border p-3" method="POST">
+    <form action="<?= Functions::urlAdmin("index.php?page=editUse&id=").$user['id'] ?>" class="form border p-3" method="POST">
         <div class="mb-3">
             <div class="mb-3">
                 <label for="">Name</label>
@@ -65,7 +65,7 @@ $user=$db->getRow('users',$id);
             <div class="mb-3">
                 <label for="">Type</label>
                 <input type="text" name="type" value="<?= $user['type'] ?>"  class="form-control">
-                <span class="text-danger"><?= $_SESSION['errors']['image'] ?? "" ?></span>
+                <span class="text-danger"><?= $_SESSION['errors']['type'] ?? "" ?></span>
             </div>
             <input type="submit" value="Submit" class="form-control text-white bg-primary">
             <a href="<?=Functions::urlAdmin('index.php?page=users')?>">All Users</a>
@@ -80,6 +80,7 @@ $user=$db->getRow('users',$id);
 </div>
 
 <?php 
+unset($_SESSION['errors']);
 endif;
 require_once 'includes/footer.php';
 ?>

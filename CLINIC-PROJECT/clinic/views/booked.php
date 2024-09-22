@@ -9,7 +9,7 @@ $conn = $db->connection('clinc');
 $id = $_SESSION['auth']['id'];
 $sql = "SELECT `books`.*,`doctors`.`id` As doc_id ,`doctors`.`name` As doc_name ,`doctors`.`adress` As 
 doc_adress ,`doctors`.`image` As doc_image ,`doctors`.`days` As doc_days ,`doctors`.`start-end` As doc_start
-  FROM `books` INNER JOIN `doctors` ON `doctors`.`id`=`books`.`doctor_id`  WHERE `books`.`user_id` = '$id' AND `books`.`status` = 'pending' OR `books`.`status`='visited' ";
+  FROM `books` INNER JOIN `doctors` ON `doctors`.`id`=`books`.`doctor_id`  WHERE `books`.`user_id` = '$id' AND `books`.`status` != 'cancelled' ";
 $result = mysqli_query($conn, $sql);
 
 
