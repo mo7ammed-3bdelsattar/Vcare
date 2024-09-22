@@ -18,6 +18,8 @@ if (isset($_GET['pat_id']) && isset($_GET['doc_id'])) {
         $visitors = $doctor['visitors'] + 1;
         $sql = "UPDATE `doctors` SET `visitors`='$visitors' WHERE `id` = '$doc_id'";
         $result = $db->query($conn, $sql);
+        $sql="INSERT INTO `visitors` (`doctor_id`, `user_id`) VALUES ('$doc_id','$pat_id')";
+        $result = $db->query($conn, $sql);
     }
     $fun->redirect('index.php?page=profile-doc');
 }else{

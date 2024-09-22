@@ -11,8 +11,6 @@ $sql = "SELECT `books`.*,`doctors`.`id` As doc_id ,`doctors`.`name` As doc_name 
 doc_adress ,`doctors`.`image` As doc_image ,`doctors`.`days` As doc_days ,`doctors`.`start-end` As doc_start
   FROM `books` INNER JOIN `doctors` ON `doctors`.`id`=`books`.`doctor_id`  WHERE `books`.`user_id` = '$id' AND `books`.`status` != 'cancelled' ";
 $result = mysqli_query($conn, $sql);
-
-
 ?>
 
 <section class="content">
@@ -49,7 +47,7 @@ $result = mysqli_query($conn, $sql);
               </div>
             </div>
             <?php if($doctor['status']=='pending'): ?>
-            <a href="#"
+            <a href="<?= Functions::url('index.php?page=cancel&id='.$doctor['id']) ?>"
             class="float-right btn-tool"><button class="btn btn-primary text-center">Calncel</button></a>
             <?php endif;?>
           </div>
